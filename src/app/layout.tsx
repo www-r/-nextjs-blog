@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="ko">
 			<body>
 				<Header>Header</Header>
-				<main className="text-3xl font-bold underline">{children}</main>
+				<main>{children}</main>
 				<Footer>Footer</Footer>
 			</body>
 		</html>
