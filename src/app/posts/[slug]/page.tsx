@@ -1,6 +1,4 @@
-
+import Page from '@/components/Page';
 export default function PostPage() {
-  return (
-    <div>PostPage</div>
-  )
+	return <Page>PostPage</Page>;
 }
