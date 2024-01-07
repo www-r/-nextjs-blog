@@ -1,0 +1,29 @@
+@tailwind components;
+@layer components {
+	.inner {
+		@apply min-w-[50rem] px-[5vw] py-10 mx-auto;
+	}
+
+	.flex-row--evenly {
+		@apply flex justify-evenly items-center;
+	}
+	.flex-row--between {
+		@apply flex justify-between items-center;
+	}
+	.flex-cols {
+		@apply flex flex-col;
+	}
+
+	.circle {
+		@apply rounded-[50%] overflow-hidden object-cover content-center;
+	}
+	.align-center {
+		@apply flex flex-col items-center;
+	}
+	.button {
+		@apply px-3 py-1 my-4 rounded-xl;
+	}
+	.center {
+		@apply flex justify-center items-center;
+	}
+}
