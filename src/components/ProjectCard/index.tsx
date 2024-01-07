@@ -2,9 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
-interface Props extends PropsWithChildren {
-	post: Post;
-}
 
 export default function ProjectCard({ post}: Props) {
 	return (
