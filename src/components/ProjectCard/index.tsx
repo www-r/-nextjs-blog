@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
-import { Post } from '@/types';
 
 interface Props extends PropsWithChildren {
 	post: Post;
 }
 
-export default function Card({ post}: Props) {
+export default function ProjectCard({ post}: Props) {
 	return (
 		<Link href={`/posts/${post.path}`}>
 			<div className="grid grid-rows-[3fr_2fr]">

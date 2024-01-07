@@ -3,7 +3,7 @@ import PinnedProjects from '@/components/PinnedProjects';
 import UnpinnedProjects from '@/components/UnpinnedProjects';
 import ProfileIntro from '@components/ProfileIntro';
 import Slider from '@components/Slider';
-import Card from '@components/Card';
+import ProjectCard from '@/components/ProjectCard';
 
 import { getPosts } from '@/service';
 
