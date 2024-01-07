@@ -7,10 +7,10 @@ interface Props extends PropsWithChildren {
 export default function Nav({ list = ['home', 'about', 'posts', 'contact'] }: Props) {
 	return (
 		<nav>
-			<ul className="flex justify-evenly">
+			<ul className="flex-row--evenly">
 				{list.map((item: string) => (
 					<Link href={`/${item}`} key={item}>
-						<li className="p-[1rem]">{item}</li>
+						<li className="p-[1rem] text-[1.6vw] font-bold">{item}</li>
 					</Link>
 				))}
 			</ul>
