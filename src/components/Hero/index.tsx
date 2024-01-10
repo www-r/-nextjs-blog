@@ -1,34 +1,28 @@
+// 'use client';
+// import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import Button from '../Button';
-import heroImage from '../../../images/hero.jpeg';
-import { PROFILE_TEXT, BUTTON } from '@/constants';
+import { PROFILE_TEXT } from '@/constants';
+import HeroImage from '../../../images/hero.jpeg';
+
 export default function Hero() {
+
 	return (
-		<section className="align-center">
+		<section
+			className="align-center pb-[4rem] transition-[height_1s_ease-in-out]"
+			// style={{ height: `${scrollY < 100 ? '80vh' : '100%'}` }}
+		>
 			<Image
-				src={heroImage}
+				src={HeroImage}
 				alt=""
-				className={`rounded-full overflow-hidden object-cover content-center`}
+				className={`rounded-full overflow-hidden object-cover content-center `}
 				width={400}
 			/>
-			<div className="text-[2rem] p-[1.25rem_0_0_0]">
+			<div className="text-[2rem] py-[2rem] ">
 				{PROFILE_TEXT.main.map((item) => (
 					<p className="text-center" key={item}>
 						{item}
 					</p>
 				))}
-			</div>
-			<div>
-				<Link href="/contact">
-					<button className="button bg-[green] text-[1.5rem] ">{BUTTON.contact}</button>
-				</Link>
-				<Link href="https://www.canva.com/design/DAFqWZuH5C4/A_tOPzv6vXALk6UKqosuew/view?utm_content=DAFqWZuH5C4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">
-					<button className="button bg-[green] text-[1.5rem] ">{BUTTON.resume}</button>
-				</Link>
-				<Link href="https://www.canva.com/design/DAF3ANc0gTw/F-_8o3304Rur1YU7k7eXRQ/view?utm_content=DAF3ANc0gTw&utm_campaign=designshare&utm_medium=link&utm_source=editor">
-					<button className="button bg-[green] text-[1.5rem] ">{BUTTON.letter}</button>
-				</Link>
 			</div>
 		</section>
 	);
