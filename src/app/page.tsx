@@ -1,19 +1,13 @@
 import Page from '@components/Page';
-import PinnedProjects from '@/components/PinnedProjects';
-import UnpinnedProjects from '@/components/UnpinnedProjects';
-import ProfileIntro from '@components/ProfileIntro';
-import Slider from '@components/Slider';
-import ProjectCard from '@/components/ProjectCard';
-
-import { getPosts } from '@/service';
-
+import Hero from '@components/Hero';
+import SliderSection from '@components/SliderSection';
 export default async function Home() {
-	const allPosts = await getPosts();
 	return (
-		<Page>
-			<ProfileIntro />
-			<PinnedProjects allPosts={allPosts} />
-			<UnpinnedProjects allPosts={allPosts} />
-		</Page>
+		<div className="bg-orange">
+			<Page>
+				<Hero />
+				<SliderSection />
+			</Page>
+		</div>
 	);
 }
