@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
+interface Props extends PropsWithChildren {}
 
-export default function Page({ children }: { children: ReactNode }) {
-	return <div className="mt-[10rem]">{children}</div>;
+export default function Page({ children }: Props) {
+	return <div className="pt-[20rem]  min-h-[85vh]">{children}</div>;
 }
