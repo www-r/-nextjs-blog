@@ -1,11 +1,16 @@
 import Page from '@components/Page';
-import ProfileIntro from '@components/ProfileIntro';
-import ProfileMain from '@components/ProfileMain';
-export default function AboutPage() {
+import AboutCover from '@/components/AboutCover';
+import AboutContent from '@/components/AboutContent';
+import SubTitle from '@/components/SubTitle';
+
+export default async function AboutPage() {
 	return (
-		<Page>
-			<ProfileIntro width={300} />
-			<ProfileMain />
-		</Page>
+		<div className="bg-ivory">
+			<Page>
+				<SubTitle>About</SubTitle>
+				<AboutCover />
+				<AboutContent />
+			</Page>
+		</div>
 	);
 }
