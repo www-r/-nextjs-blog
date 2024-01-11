@@ -9,7 +9,9 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@gsap/react": "^2.0.2",
 		"@notionhq/client": "^2.2.14",
+		"gsap": "^3.12.4",
 		"next": "14.0.4",
 		"react": "^18",
 		"react-dom": "^18",
