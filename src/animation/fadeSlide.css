@@ -1,0 +1,12 @@
+@keyframes fadeTopToBottomAnimation {
+	from {
+		transform: translateY(10);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+.fadeTopToBottom {
+	animation: fadeTopToBottomAnimation 1s ease-in infinite; /* 애니메이션 지속 시간 및 무한 반복 설정 */
+}
