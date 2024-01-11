@@ -76,8 +76,8 @@ export default function Slider({ children, type }: Props) {
 					ssr // means to render carousel on server-side.
 					infinite
 					removeArrowOnDeviceType={['tablet', 'mobile']}
-					containerClass="my-10 py-10 w-full"
-					// sliderClass="gap-0"
+					containerClass="my-10 py-10 w-full "
+					sliderClass=" flex gap-0 "
 					itemClass="center"
 					centerMode
 				>

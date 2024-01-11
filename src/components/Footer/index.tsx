@@ -6,15 +6,15 @@ import Tistory from '@/assets/logomark.png';
 
 export default function Footer() {
 	return (
-		<footer className="inner bg-brown py-8 w-full text-white text-[2.5rem] flex-cols justify-center items-center">
-			<ul className="inner flex justify-center my-auto">
+		<footer className="inner bg-brown py-8 w-full text-white text-[1.5rem] flex-cols justify-center items-center">
+			<ul className="inner center gap-20 my-auto h-[10rem]">
 				<Link href="https://github.com/www-r">
-					<li className=" w-[6rem] center">
+					<li className=" w-[6rem]">
 						<Icon src={Github} alt="github" size={50} />
 					</li>
 				</Link>
 				<Link href="https://woorii-kye.tistory.com">
-					<li>
+					<li className="">
 						<Icon src={Tistory} alt="tistory" size={64} />
 					</li>
 				</Link>
