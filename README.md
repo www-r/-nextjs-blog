@@ -74,7 +74,7 @@
   - [ ] 각 태그들이 어떤 기능이 있는지 공부하기
 - [ ] SEO 향상
   - [ ] meta
-  - [ ] symentic tag
+  - [ ] sementic tag
   - [ ] ...more 
 - [ ] 반응형 확인하기
   - [X] 모바일
@@ -108,4 +108,58 @@
   - [ ] 블로그 글 작성
   - [ ] 프로젝트 Portfolio 상세 설명 업데이트    
 - 아쉬운 부분
-  - [ ] 프로젝트 Portfolio 상세 설명 업데이트 
+  - [ ] 프로젝트 Portfolio 상세 설명 업데이트
+ 
+---
+
+# 개인 포트폴리오 사이트 
+
+## 결과물
+v0.1.0 [kimyoungen.com](kimyoungen.com)
+
+## 작업 인원, 작업 기간
+1명(본인), 2023.12 ~ 2024.01
+
+## 작업 환경 
+- node v20.9.0
+- npm 10.1.0
+
+## 기술 스택
+- TypeScript v5
+- Next.js v14.0.4
+- Tailwind CSS v3.3.0
+
+- notionhq/client v2.2.14 
+- github REST API
+
+- gsap
+- react-markdown
+- react-multi-carousel
+
+- eslint, prettier
+
+## 프로젝트 구조
+
+```
+Home ( / )
+├── About ( /about )
+├── Projects ( /projects )
+|        └── [projectId] ( /projects/[projectId] )
+└── Contact ( /contact )
+```
+
+## 프로젝트 둘러보기
+### Home Page
+[gif]
+
+### About
+[gif]
+
+### Projects
+[gif]
+
+### Contact
+[gif]
+
+## 기능 소개
+
