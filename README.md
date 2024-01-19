@@ -74,7 +74,7 @@
   - [ ] 각 태그들이 어떤 기능이 있는지 공부하기
 - [ ] SEO 향상
   - [ ] meta
-  - [ ] symentic tag
+  - [ ] sementic tag
   - [ ] ...more 
 - [ ] 반응형 확인하기
   - [X] 모바일
@@ -108,4 +108,77 @@
   - [ ] 블로그 글 작성
   - [ ] 프로젝트 Portfolio 상세 설명 업데이트    
 - 아쉬운 부분
-  - [ ] 프로젝트 Portfolio 상세 설명 업데이트 
+  - [ ] 프로젝트 Portfolio 상세 설명 업데이트
+ 
+---
+
+# 개인 포트폴리오 사이트 
+
+## 결과물
+v0.1.0 [kimyoungen.com](kimyoungen.com)
+
+## 작업 인원, 작업 기간
+1명(본인), 2023.12 ~ 2024.01
+
+## 버전
+- node v20.9.0
+- npm 10.1.0
+
+## 기술 스택
+- TypeScript v5
+- Next.js v14.0.4
+- Tailwind CSS v3.3.0
+
+- notionhq/client v2.2.14 
+- github REST API
+
+- gsap
+- react-markdown
+- react-multi-carousel
+
+- eslint, prettier
+
+## 프로젝트 구조
+
+```
+Home ( / )
+├── About ( /about )
+├── Projects ( /projects )
+|        └── [projectId] ( /projects/[projectId] )
+└── Contact ( /contact )
+```
+
+## 프로젝트 둘러보기
+
+<table>
+ <tr>
+   <th>Home</th>
+   <th>About</th>
+   <th>Projects</th>
+   <th>Contact</th>
+ </tr>
+ <tr>
+   <td>[gif]</td>
+   <td>[gif]</td>
+   <td>[gif]</td>
+   <td>[gif]</td>
+ </tr>
+</table>
+
+
+## 기능 소개
+- 반응형으로 만들어 모바일 환경의 사용자들의 편의성을 높였습니다.
+- tailwind.config.js 에서 반복적으로 사용되는 값을 지정해 개발할 때의 편의성을 높였습니다.
+- 보안과 사용자의 편의성을 위해 서버에서 데이터를 가져왔습니다.
+  - 보안을 위해 API key 값은 .env 파일에 넣어 사용했는데, 클라이언트 측에서는 아예 가져올 수 없게 NEXT_PUBLIC 을 붙이지 않았습니다.
+  - 컴포넌트에 async를 붙여 컴포넌트 자체에서 데이터를 서버로부터 가져올 수 있게 했습니다. 
+  
+  
+   
+
+
+
+
+
+
+
