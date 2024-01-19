@@ -20,9 +20,9 @@
 	.align-center {
 		@apply flex flex-col items-center;
 	}
-	.button {
+	/* .button {
 		@apply px-3 py-1 my-4 rounded-xl;
-	}
+	} */
 	.center {
 		@apply flex justify-center items-center;
 	}

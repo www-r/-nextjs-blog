@@ -7,13 +7,34 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		fontSize: {
+			xs: '1.3rem',
+			sm: '1.5rem',
+			md: '1.7rem',
+			lg: '2rem',
+			xl: '2.56rem',
+			'1xl': '3rem',
+			'2xl': '4.36rem',
+			'3xl': '6rem',
+			'4xl': '7rem',
+			'vw-sm': '1.9vw',
+		},
 		extend: {
 			colors: {
+				white: '#fff',
 				brown: '#1f1e1d',
 				blue: '#e5f0f3',
-				ivory: '#F8DDC0',
+				ivory: 'rgb(251,245,222)',
 				green: '#d5fcdf',
-				orange:'#ed7c48'
+				orange: '#ed7c48',
+				pink: '#fed5e7',
+				purple: '#65449e',
+				grey: 'rgb(226,227,232)',
+			},
+			fontFamily: {
+				header: 'SejonghospitalBold',
+				content: 'GothicA1-Light',
+				guestbook: 'KCC-eunyoung',
 			},
 			screens: {
 				'2xl': '1600px',

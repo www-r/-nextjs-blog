@@ -14,7 +14,7 @@ export default async function EducationContainer() {
 					{data.map((item: Education) => (
 						<li key={item.name} className="flex-cols gap-1">
 							<h4>{item.name}</h4>
-							<p className="flex gap-5 text-[1.4rem]">
+							<p className="flex gap-5 text-sm">
 								<span>{item.when}</span>
 								<span>{item.finished ? '수료' : '중퇴'}</span>
 							</p>

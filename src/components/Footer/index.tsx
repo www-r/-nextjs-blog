@@ -6,7 +6,7 @@ import Tistory from '@/assets/logomark.png';
 
 export default function Footer() {
 	return (
-		<footer className="inner bg-brown py-8 w-full text-white text-[1.5rem] flex-cols justify-center items-center">
+		<footer className="inner bg-brown py-8 w-full text-white text-md flex-cols justify-center items-center">
 			<ul className="inner center gap-20 my-auto h-[10rem]">
 				<Link href="https://github.com/www-r">
 					<li className=" w-[6rem]">

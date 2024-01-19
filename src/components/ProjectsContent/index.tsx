@@ -24,7 +24,7 @@ export default function ProjectsContent({ projectArr }: Props) {
 
 	return (
 		<>
-			<div className="inner flex-row--between mt-5 mx-3 text-3xl">
+			<div className="inner flex-row--between mt-5 mx-3 text-lg">
 				<div className="ml-[5vw]">{`Projects (${projects.length})`}</div>
 				<FilterList setFilter={setFilter} />
 			</div>

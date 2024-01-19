@@ -7,7 +7,7 @@ interface Props extends PropsWithChildren {
 }
 
 export default function Nav({}: Props) {
-	const linksArr = [PATH_NAME.home, PATH_NAME.about, PATH_NAME.projects, PATH_NAME.contact];
+	const linksArr = [PATH_NAME.home, PATH_NAME.about, PATH_NAME.projects, PATH_NAME.guestbook];
 
 	return (
 		<nav>
@@ -16,7 +16,7 @@ export default function Nav({}: Props) {
 					const pathname = link === PATH_NAME.home ? '' : link;
 					return (
 						<Link href={`/${pathname}`} key={link}>
-							<li className="p-4 sm:text-[1.8vw] 2xl:text-[2.56rem] font-bold">{link}</li>
+							<li className="p-4 sm:text-vw-sm 2xl:text-xl font-header hover:text-[orange]">{link}</li>
 						</Link>
 					);
 				})}

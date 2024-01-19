@@ -12,7 +12,7 @@ export default function SkillBox({ data: { name, description, image } }: Props) 
 			<div className="w-[7rem] h-[7rem] overflow-hidden flex items-center">
 				<Image src={image} alt={name} width={70} height={70} style={{ objectFit: 'cover' }} />
 			</div>
-			<p className="text-3xl font-bold mt-5 text-center">{name}</p>
+			<p className="text-sm font-bold mt-5 text-center">{name}</p>
 		</div>
 	);
 }
