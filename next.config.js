@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images : {
+    dangerouslyAllowSVG: true,
    remotePatterns : [
     {
       protocol : 'https',
@@ -9,9 +10,14 @@ const nextConfig = {
     {
       protocol:'https',
       hostname: 'file.notion.so'
+    },
+    {
+      protocol:'https',
+      hostname: 'bleyetciwkirndgevlln.supabase.co'
     }
    ]
-  }
+  },
+  formats:['image/webp','image/svg','image/png','image/gif','image/ico','image/jpeg','image/svg+xml']
 }
 
 module.exports = nextConfig

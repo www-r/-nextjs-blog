@@ -11,6 +11,8 @@
 	"dependencies": {
 		"@gsap/react": "^2.0.2",
 		"@notionhq/client": "^2.2.14",
+		"@supabase/supabase-js": "^2.39.3",
+		"dotenv": "^16.3.1",
 		"gsap": "^3.12.4",
 		"next": "14.0.4",
 		"react": "^18",
