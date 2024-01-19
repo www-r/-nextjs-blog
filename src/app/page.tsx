@@ -1,12 +1,14 @@
 import Page from '@components/Page';
 import SiteCover from '@/components/SiteCover';
 import SliderSection from '@components/SliderSection';
+import ContactSection from '@/components/ContactSection';
 export default async function Home() {
 	return (
-		<div className="bg-orange">
+		<div className="bg-white">
 			<Page>
 				<SiteCover />
 				<SliderSection />
+				<ContactSection />
 			</Page>
 		</div>
 	);
