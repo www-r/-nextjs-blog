@@ -51,8 +51,7 @@ export async function getFileUrlFromToggle(name: string) {
 		if (name === 'image') {
 			const profileImgToggleId = dataBlock.results[0].id;
 			const res = await retrieveBlockChildren(profileImgToggleId);
-			// console.log('res', res);
-			// return res;
+		
 			return res.results[0].image.file.url;
 		} else {
 			return dataBlock.results[0].file.file.url; //.json url
