@@ -34,3 +34,11 @@ export type Contact = {
 	key: string;
 	value: string[];
 };
+
+export type CommentData = {
+	id: string;
+	created_at: string;
+	message: string;
+	author: string;
+	is_locked: boolean;
+};
