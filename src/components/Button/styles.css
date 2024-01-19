@@ -1,0 +1,12 @@
+.button:hover {
+	color: white !important;
+}
+.button.contact:hover {
+	background-color: #d56a1f;
+}
+.button.resume:hover {
+	background-color: #65449e;
+}
+.button.letter:hover {
+	background-color: #1f1e1d;
+}
