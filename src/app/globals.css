@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 @import './custom-styles-set.css';
+@font-face {
+	font-family: 'SejonghospitalBold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'GothicA1-Light';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/GothicA1-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'KCC-eunyoung';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
 html,
 body,
@@ -117,7 +135,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
+	content: 'GothicA1-Light';
 	content: none;
 }
 table {
@@ -134,9 +152,12 @@ html,
 body {
 	height: 100vh;
 	overflow-y: auto;
+	font-family: '';
+	scroll-behavior: smooth;
 }
 body {
 	line-height: 1.5;
+	font-size: 16px;
 }
 a {
 	color: inherit;
@@ -149,6 +170,10 @@ button {
 }
 button:hover {
 	cursor: pointer;
+}
+input:focus,
+textarea:focus {
+	outline: none;
 }
 * {
 	box-sizing: border-box;
