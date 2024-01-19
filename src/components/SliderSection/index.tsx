@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Section from '@components/Section';
 import Slider from '@components/Slider';
 import SubTitle from '@components/SubTitle';
 import SkillBox from '@components/SkillBox';
@@ -7,9 +8,11 @@ import Icon from '@components/Icon';
 import { getFileUrlFromToggle, readJsonFile, getUploadedProjectsTitle, createProjectDataArr } from '@/service/data';
 import { Skill } from '@/types';
 import Chevron from '@/assets/arrow_forward.png';
+import { COLOR } from '@/constants';
 
 export default async function SliderSection() {
 	try {
+		const a = getFileUrlFromToggle('image');
 		const fileUrl = await getFileUrlFromToggle('skill');
 		const skillDataArr = await readJsonFile(fileUrl);
 		const randomNumber = Math.random();
@@ -18,17 +21,8 @@ export default async function SliderSection() {
 		const projectDataArr = await createProjectDataArr(titleArr);
 
 		return (
-			<section className="bg-white py-[10rem]  flex-cols gap-[5rem]">
-				<div>
-					<SubTitle>Skill</SubTitle>
-
-					<Slider type="skill">
-						{(skillDataArr as Skill[]).map((data, index: number) => (
-							<SkillBox data={data} key={index + randomNumber} />
-						))}
-					</Slider>
-				</div>
-				<div>
+			<div>
+				<Section bgColor={COLOR.ivory}>
 					<Link href="/projects">
 						<SubTitle>
 							<div className="flex items-center gap-5">
@@ -37,17 +31,25 @@ export default async function SliderSection() {
 							</div>
 						</SubTitle>
 					</Link>
-					<div className='inner'>
+					<div className="inner">
 						<Slider type="project">
 							{projectDataArr.map((data) => (
-								<li key={data.id}>
+								<div key={data.id}>
 									<ProjectCard project={data} />
-								</li>
+								</div>
 							))}
 						</Slider>
 					</div>
-				</div>
-			</section>
+				</Section>
+				<Section bgColor={COLOR.blue}>
+					<SubTitle>Skill</SubTitle>
+					<Slider type="skill">
+						{(skillDataArr as Skill[]).map((data, index: number) => (
+							<SkillBox data={data} key={index + randomNumber} />
+						))}
+					</Slider>
+				</Section>
+			</div>
 		);
 	} catch (error) {
 		console.log('error', error.message);
