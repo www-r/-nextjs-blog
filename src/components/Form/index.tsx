@@ -2,10 +2,10 @@
 import { useState, useEffect, useRef } from 'react';
 import Label from '@components/Label';
 import FormCover from '@components/FormCover';
-import Button from '../Button';
+// import Button from '../Button';
 import { insertRow, signInOAuthUser } from '@/service/supabase';
 import { formatDate } from '@/utils/formatDate';
-
+// import { useHover } from '@uidotdev/usehooks';
 export default function Form() {
 	const time = formatDate();
 	const authorRef = useRef(null);
@@ -13,18 +13,9 @@ export default function Form() {
 	const messageRef = useRef(null);
 	const passwordRef = useRef(null);
 	const checkboxRef = useRef(null);
-	const formCoverRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
-	const [isAuthorized, setIsAuthorized] = useState<boolean>(checkIfAuthorized());
-	const [isHovered, setIsHovered] = useState<boolean>(false);
-	function checkIfAuthorized() {
-		if (
-			window.localStorage.getItem('oauth_provider_token') &&
-			window.localStorage.getItem('oauth_provider_refresh_token')
-		) {
-			return true;
-		} else false;
-	}
+	const [isAuthorized, setIsAuthorized] = useState(false);
+	// const [ref, hovering] = useHover();
 	function checkboxHandler() {
 		setIsPasswordDisabled(!isPasswordDisabled);
 	}
@@ -45,48 +36,35 @@ export default function Form() {
 		await signInOAuthUser();
 	}
 	useEffect(() => {
-		formCoverRef.current.addEventListener('mouseEnter', () => {
-			setIsHovered(true);
-		});
-		formCoverRef.current.addEventListener('mouseLeave', () => {
-			setIsHovered(false);
-		});
-		return () => {
-			formCoverRef.current.removeEventListener('mouseEnter', () => {
-				setIsHovered(true);
-			});
-			formCoverRef.current.removeEventListener('mouseLeave', () => {
-				setIsHovered(false);
-			});
-		};
-	}, []);
+		function checkIfAuthorized() {
+			if (
+				window.localStorage.getItem('oauth_provider_token') &&
+				window.localStorage.getItem('oauth_provider_refresh_token')
+			) {
+				return true;
+			} else false;
+		}
+		setIsAuthorized(checkIfAuthorized());
+	}, [isAuthorized]);
+
 	return (
-		<form action="" className="mt-3 text-lg relative bg-white rounded-md">
-			{!isAuthorized && (
-				<FormCover className="hover:bg-white/100" ref={formCoverRef}>
-					<Button
-						onClick={buttonClickHandler}
-						className="min-w-[18rem] w-[24vw] mb-[1.6rem] py-3 bg-transparent text-2xl"
-					>
-						{isHovered && '로그인하기'}
-					</Button>
-				</FormCover>
-			)}
+		<form action="" className="mt-3 text-xs relative bg-white/60 rounded-md opacity-100 p-3">
+			{!isAuthorized && <FormCover className="hover:bg-white/80" buttonClickHandler={buttonClickHandler} />}
 			<div className=" grid grid-cols-[7fr_3fr] gap-5 ">
-				<div className="p-2">
+				<div className="p-3">
 					<Label htmlFor="author-name">작성자</Label>
 					<input
 						id="author-name"
 						placeholder="누구신가요?"
 						maxLength={15}
-						className="underline decoration-[0.09rem] text-[2.2rem]"
+						className="underline decoration-[0.09rem]"
 						required
 						ref={authorRef}
 					/>
 				</div>
 				<div className="p-2">
 					<Label htmlFor="date">날짜</Label>
-					<time id="date" className="underline decoration-[0.09rem] text-[2.2rem]" ref={dateRef}>
+					<time id="date" className="underline decoration-[0.09rem] " ref={dateRef}>
 						{time}
 					</time>
 				</div>
@@ -95,7 +73,7 @@ export default function Form() {
 				<div className="p-2">
 					<Label htmlFor="input--message">메세지</Label>
 					<textarea
-						className="w-full underline decoration-[0.09rem] border border-solid p-2 text-[2.2rem]"
+						className="w-full underline decoration-[0.09rem] border border-solid p-2 "
 						placeholder="메세지를 입력해주세요"
 						rows={2}
 						minLength={1}
