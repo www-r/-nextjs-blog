@@ -8,7 +8,6 @@ import Icon from '@components/Icon';
 import { getFileUrlFromToggle, readJsonFile, getUploadedProjectsTitle, createProjectDataArr } from '@/service/data';
 import { Skill } from '@/types';
 import Chevron from '@/assets/arrow_forward.png';
-import { COLOR } from '@/constants';
 
 export default async function SliderSection() {
 	try {
@@ -22,7 +21,7 @@ export default async function SliderSection() {
 
 		return (
 			<div>
-				<Section bgColor={COLOR.ivory}>
+				<Section className="bg-ivory">
 					<Link href="/projects">
 						<SubTitle>
 							<div className="flex items-center gap-5">
@@ -41,7 +40,7 @@ export default async function SliderSection() {
 						</Slider>
 					</div>
 				</Section>
-				<Section bgColor={COLOR.blue}>
+				<Section className="bg-blue">
 					<SubTitle>Skill</SubTitle>
 					<Slider type="skill">
 						{(skillDataArr as Skill[]).map((data, index: number) => (

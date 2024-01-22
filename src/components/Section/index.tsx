@@ -1,16 +1,13 @@
-import { PropsWithChildren } from 'react';
+import { ComponentProps } from 'react';
 
-interface Props extends PropsWithChildren {
-	bgColor: string;
+interface Props extends ComponentProps<'section'> {
 	border?: boolean;
-	id?: string;
 }
 
-export default function Section({ children, bgColor, border = true, id }: Props) {
+export default function Section({ children, border = true, id, className }: Props) {
 	return (
 		<section
-			style={{ backgroundColor: `${bgColor}` }}
-			className={`py-[5rem] ${border ? 'border-t border-solid border-black' : ''}`}
+			className={`py-[5rem] relative ${border ? 'border-t border-solid border-black' : ''} ${className}`}
 			id={id}
 		>
 			{children}

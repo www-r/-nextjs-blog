@@ -1,5 +1,5 @@
 .button:hover {
-	color: white !important;
+	color: #fff !important;
 }
 .button.contact:hover {
 	background-color: #d56a1f;

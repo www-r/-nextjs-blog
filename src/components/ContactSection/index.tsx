@@ -9,7 +9,7 @@ export default async function ContactSection() {
 	const data = await readJsonFile(fileUrl);
 	// console.log('data', data);
 	return (
-		<Section bgColor={COLOR.green} id="contact">
+		<Section className="bg-green" id="contact">
 			<SubTitle>Contact</SubTitle>
 			<ul className="inner flex mt-[5rem]">
 				{data[1]['value'].map((email: string) => (

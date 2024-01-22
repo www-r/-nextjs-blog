@@ -1,12 +1,8 @@
 'use client';
-import { PropsWithChildren } from 'react';
+import { ComponentProps } from 'react';
 
-interface Props extends PropsWithChildren {}
+interface Props extends ComponentProps<'div'> {}
 
-export default function Page({ children }: Props) {
-	return (
-		<div className="pt-[15rem]  min-h-[85vh]">
-			{children}
-		</div>
-	);
+export default function Page({ children, className }: Props) {
+	return <div className={`pt-[15rem]  min-h-[85vh] ${className}`}>{children}</div>;
 }
