@@ -13,9 +13,10 @@ export default function Form() {
 	const messageRef = useRef(null);
 	const passwordRef = useRef(null);
 	const checkboxRef = useRef(null);
+	const formCoverRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
 	const [isAuthorized, setIsAuthorized] = useState<boolean>(checkIfAuthorized());
-
+	const [isHovered, setIsHovered] = useState<boolean>(false);
 	function checkIfAuthorized() {
 		if (
 			window.localStorage.getItem('oauth_provider_token') &&
@@ -43,20 +44,35 @@ export default function Form() {
 	async function buttonClickHandler() {
 		await signInOAuthUser();
 	}
-	useEffect(() => {}, []);
+	useEffect(() => {
+		formCoverRef.current.addEventListener('mouseEnter', () => {
+			setIsHovered(true);
+		});
+		formCoverRef.current.addEventListener('mouseLeave', () => {
+			setIsHovered(false);
+		});
+		return () => {
+			formCoverRef.current.removeEventListener('mouseEnter', () => {
+				setIsHovered(true);
+			});
+			formCoverRef.current.removeEventListener('mouseLeave', () => {
+				setIsHovered(false);
+			});
+		};
+	}, []);
 	return (
-		<form action="" className="mt-3 text-lg relative">
+		<form action="" className="mt-3 text-lg relative bg-white rounded-md">
 			{!isAuthorized && (
-				<FormCover>
+				<FormCover className="hover:bg-white/100" ref={formCoverRef}>
 					<Button
 						onClick={buttonClickHandler}
 						className="min-w-[18rem] w-[24vw] mb-[1.6rem] py-3 bg-transparent text-2xl"
 					>
-						로그인하기
+						{isHovered && '로그인하기'}
 					</Button>
 				</FormCover>
 			)}
-			<div className=" grid grid-cols-[7fr_3fr] gap-5">
+			<div className=" grid grid-cols-[7fr_3fr] gap-5 ">
 				<div className="p-2">
 					<Label htmlFor="author-name">작성자</Label>
 					<input
