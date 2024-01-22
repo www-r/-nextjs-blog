@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 import './globals.css';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
+import Loader from '@/components/Loader';
 
 export const metadata: Metadata = {
 	title: 'Kim Young En',
@@ -13,9 +15,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="ko">
 			<body className="max-w-[160rem] h-[100vh] flex-cols items-center mx-auto overflow-x-hidden">
-				<Header />
-				<main className="w-full">{children}</main>
-				<Footer />
+				<Suspense fallback={<Loader />}>
+					<Header />
+					<main className="w-full">{children}</main>
+					<Footer />
+				</Suspense>
 			</body>
 		</html>
 	);
