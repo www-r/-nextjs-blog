@@ -1,7 +1,22 @@
-export default function FormCover({ children }) {
+import { ComponentProps } from 'react';
+import InteractiveBtn from '../InteractiveBtn';
+import useHover from '@/hooks/useHover';
+
+interface Props extends ComponentProps<'div'> {
+	buttonClickHandler: () => void;
+}
+export default function FormCover({ className, buttonClickHandler }: Props) {
+	const [ref, hovering] = useHover();
 	return (
-		<div className=" absolute z-[999] bg-white/90 w-full h-full top-0 left-0 center font-header hover:bg-white/30">
-			{children}
+		<div
+			className={className + ' absolute z-[999]  w-full h-full top-0 left-0 center font-header bg-white/30 rounded-md '}
+			ref={ref}
+		>
+			{hovering && (
+				<InteractiveBtn onClick={buttonClickHandler} className="min-w-[18rem] w-[24vw] mb-[1.6rem] py-3 bg-transparent ">
+			구글로 로그인하기
+				</InteractiveBtn>
+			)}
 		</div>
 	);
 }
