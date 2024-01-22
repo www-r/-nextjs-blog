@@ -17,7 +17,7 @@ const nextConfig = {
     }
    ]
   },
-  formats:['image/webp','image/svg','image/png','image/gif','image/ico','image/jpeg','image/svg+xml']
+
 }
 
 module.exports = nextConfig

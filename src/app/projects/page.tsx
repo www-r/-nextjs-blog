@@ -7,13 +7,11 @@ export default async function PostsPage() {
 	const totalTitleArr = await getUploadedProjectsTitle();
 	const totalProjectDataArr = await createProjectDataArr(totalTitleArr);
 	return (
-		<div className="bg-blue">
-			<Page>
-				<section>
-					<SubTitle>Projects</SubTitle>
-					<ProjectsContent projectArr={totalProjectDataArr} />
-				</section>
-			</Page>
-		</div>
+		<Page className="bg-blue">
+			<section>
+				<SubTitle>Projects</SubTitle>
+				<ProjectsContent projectArr={totalProjectDataArr} />
+			</section>
+		</Page>
 	);
 }

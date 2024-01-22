@@ -21,23 +21,25 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
-				white: '#fff',
+				white: '#fdfffc',
 				brown: '#1f1e1d',
 				blue: '#e5f0f3',
 				ivory: 'rgb(251,245,222)',
 				green: '#d5fcdf',
 				orange: '#ed7c48',
-				pink: '#fed5e7',
+				pink: '#f8edeb',
 				purple: '#65449e',
 				grey: 'rgb(226,227,232)',
 			},
 			fontFamily: {
 				header: 'SejonghospitalBold',
 				content: 'GothicA1-Light',
-				guestbook: 'KCC-eunyoung',
 			},
 			screens: {
 				'2xl': '1600px',
+			},
+			backgroundImage: {
+				forest: 'url(/cover.png)',
 			},
 		},
 	},
