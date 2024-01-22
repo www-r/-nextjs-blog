@@ -7,14 +7,14 @@ export async function getDatabaseData(row = '') {
 	if (error) {
 		console.error(error);
 	} else {
-		console.log(guestbook);
+		// console.log(guestbook);
 		return guestbook;
 	}
 }
 // INSERT A ROW
 export async function insertRow(input) {
 	const { data, error } = await supabase.from(DB_TABLE_NAME).insert(input);
-	console.log('insertRow:', data);
+	// console.log('insertRow:', data);
 	if (error) {
 		console.error(error);
 	}
@@ -63,6 +63,28 @@ export async function signInOAuthUser() {
 }
 export async function signOutOAuthUser() {
 	const { error } = await supabase.auth.signOut();
+	if (error) {
+		console.error(error);
+	}
+	alert('로그아웃되었습니다.');
+}
+
+export async function retrieveUser() {
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+	console.log(user);
+}
+export async function retrieveSession() {
+	const { data, error } = await supabase.auth.getSession();
+	if (error) {
+		console.error(error);
+	}
+	console.log('retrieveSession', data);
+}
+export async function retrieveNewSession() {
+	const { data, error } = await supabase.auth.refreshSession();
+	const { session, user } = data;
 	if (error) {
 		console.error(error);
 	}
