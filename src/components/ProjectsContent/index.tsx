@@ -20,7 +20,7 @@ export default function ProjectsContent({ projectArr }: Props) {
 			const filteredArr = projectArr.filter((item) => item.category === filter);
 			setProjects(filteredArr);
 		}
-	}, [filter, projectArr]);
+	}, [filter, projectArr]); //왜? 질문하ㄱ;
 
 	return (
 		<>

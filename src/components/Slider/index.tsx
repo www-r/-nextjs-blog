@@ -1,19 +1,33 @@
 'use client';
 
-import { PropsWithChildren } from 'react';
+import { ComponentProps } from 'react';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-interface Props extends PropsWithChildren {
-	type: string;
+interface Props extends ComponentProps<'div'> {
+	type?: string;
 	height?: number;
 }
 
-export default function Slider({ children, type }: Props) {
+export default function Slider({ children, type = '', height }: Props) {
 	switch (type) {
+		case '':
+			const responsive = {};
+			return (
+				<Carousel
+					responsive={responsive}
+					ssr // means to render carousel on server-side.
+					partialVisible
+					infinite
+					containerClass=" h-[20rem] w-full"
+					itemClass="w-[30rem]"
+				>
+					{children}
+				</Carousel>
+			);
 		case 'skill':
-			const responsive = {
+			const responsive1 = {
 				xl: {
 					breakpoint: { max: 3000, min: 1440 },
 					items: 10,
@@ -37,7 +51,7 @@ export default function Slider({ children, type }: Props) {
 			};
 			return (
 				<Carousel
-					responsive={responsive}
+					responsive={responsive1}
 					ssr // means to render carousel on server-side.
 					partialVisible
 					infinite

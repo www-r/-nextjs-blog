@@ -2,9 +2,10 @@ import {
 	ParagraphBlockObjectResponse,
 	ImageBlockObjectResponse,
 	ToggleBlockObjectResponse,
-	ChildPageBlockObjectResponse,
-	BlockObjectResponse,
 	PageObjectResponse,
+	CheckboxPropertyItemObjectResponse,
+	SelectPropertyItemObjectResponse,
+	ChildPageBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import { queryDatabaseByTitle, retrieveBlockChildren, retrievePage } from './notion';
 import { Project } from '@/types';
@@ -30,7 +31,7 @@ async function createDataToggleArr() {
 		const dataBlockArr = await getDataBlockArr();
 		const toggleArr = dataBlockArr.map((block) => {
 			return {
-				name: block.toggle.rich_text[0].plain_text as string,
+				name: (block as ToggleBlockObjectResponse).toggle.rich_text[0].plain_text as string,
 				id: block.id,
 			};
 		});
@@ -51,10 +52,11 @@ export async function getFileUrlFromToggle(name: string) {
 		if (name === 'image') {
 			const profileImgToggleId = dataBlock.results[0].id;
 			const res = await retrieveBlockChildren(profileImgToggleId);
-		
+			//@ts-ignore
 			return res.results[0].image.file.url;
 		} else {
-			return dataBlock.results[0].file.file.url; //.json url
+			//@ts-ignore
+			return dataBlock.results[0].file.file.url;
 		}
 	} catch (error) {
 		console.error(error);
@@ -82,13 +84,12 @@ export async function getUploadedProjectsTitle(): Promise<string[]> {
 	try {
 		const response = await queryDatabaseByTitle('', 'projects');
 		// console.log('projectsDB', response);
-
 		const titleArr = await Promise.all(response?.results.map(async (item) => await retrievePage(item.id)))
+			//@ts-ignore
 			.then((res) => res.map((item) => item.properties))
 			.then((res) => res.map((item) => item.title))
 			.then((res) => res.map((item) => item.title))
 			.then((res) => res.map((item) => item[0].plain_text));
-		// console.log('titleArr', titleArr);
 		return titleArr;
 	} catch (error) {
 		console.error(error);
@@ -97,18 +98,19 @@ export async function getUploadedProjectsTitle(): Promise<string[]> {
 
 //
 export async function createProjectDataArr(titleArr: string[]): Promise<Project[]> {
-	// console.log('titleArr', titleArr);
 	if (titleArr) {
 		return await Promise.all(
 			titleArr.map(async (title) => {
 				const res = await queryDatabaseByTitle(title, 'projects');
 				const pageBlockArr = await retrieveBlockChildren(res.results[0].id);
 				const childPageBlockId = await retrieveBlockChildren(res.results[0].id)
-					.then((res) => res.results.filter((item) => item.type === 'child_page'))
+					.then((res) => res.results.filter((item) => (item as ChildPageBlockObjectResponse).type === 'child_page'))
 					.then((res) => res[0].id);
 				// console.log('childPageBlockArr', childPageBlockId);
 
-				const toggleBlockResponseArr = pageBlockArr.results.filter((item) => item.type === 'toggle');
+				const toggleBlockResponseArr = pageBlockArr.results.filter(
+					(item) => (item as ToggleBlockObjectResponse).type === 'toggle'
+				);
 				const toggleBlockIdArr = toggleBlockResponseArr.map((item) => item.id);
 				const toggleArr = await Promise.all(toggleBlockIdArr.map(async (id) => await retrieveBlockChildren(id)))
 					.then((res) => res.map((item) => item.results))
@@ -118,14 +120,17 @@ export async function createProjectDataArr(titleArr: string[]): Promise<Project[
 					title: (toggleArr[0] as ParagraphBlockObjectResponse)?.paragraph.rich_text[0].plain_text,
 					id: childPageBlockId,
 					link: (toggleArr[1] as ParagraphBlockObjectResponse)?.paragraph.rich_text[0].plain_text,
-					image: (toggleArr[2] as ImageBlockObjectResponse)?.image.file.url,
+					//@ts-ignore
+					image: (toggleArr[2] as ImageBlockObjectResponse)?.image.file.url as string,
 					description: {
 						people: (toggleArr[4] as ParagraphBlockObjectResponse)?.paragraph.rich_text[0].plain_text,
 						term: (toggleArr[3] as ParagraphBlockObjectResponse)?.paragraph.rich_text[0].plain_text,
 						paragraph: (toggleArr[5] as ParagraphBlockObjectResponse)?.paragraph.rich_text[0].plain_text,
 					},
-					pinned: (res.results[0] as PageObjectResponse).properties.pinned.checkbox,
-					category: (res.results[0] as PageObjectResponse).properties.category.select.name,
+					pinned: ((res.results[0] as PageObjectResponse).properties.pinned as CheckboxPropertyItemObjectResponse)
+						.checkbox,
+					category: ((res.results[0] as PageObjectResponse).properties.category as SelectPropertyItemObjectResponse)
+						.select.name,
 				};
 			})
 		);

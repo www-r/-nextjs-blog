@@ -14,13 +14,11 @@ export default function FlipCard({ children, img }) {
 			<div className="card-wrapper">
 				{/* //front */}
 				<div className={`flip-card front`}>
-					
-						<Image src={img} alt="" className="front-image" width={64} height={64} />
-			
+						<Image src={img} alt="" className="front-image" width={70} height={70} />
 				</div>
 				{/* //back */}
 				<div className={`flip-card back`}>
-					<div>{children}</div>
+					<div className='content'>{children}</div>
 				</div>
 			</div>
 		</div>
