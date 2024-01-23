@@ -38,28 +38,22 @@ export async function upsertMatchingRows() {
 }
 
 export async function signInOAuthUser() {
-	// Register this immediately after calling createClient!
-	// Because signInWithOAuth causes a redirect, you need to fetch the
-	// provider tokens from the callback.
-	supabase.auth.onAuthStateChange((event, session) => {
-		if (session && session.provider_token) {
-			window.localStorage.setItem('oauth_provider_token', session.provider_token);
-		}
-
-		if (session && session.provider_refresh_token) {
-			window.localStorage.setItem('oauth_provider_refresh_token', session.provider_refresh_token);
-		}
-
-		if (event === 'SIGNED_OUT') {
-			window.localStorage.removeItem('oauth_provider_token');
-			window.localStorage.removeItem('oauth_provider_refresh_token');
-		}
-	});
-	// Call this on your Sign in with GitHub button to initiate OAuth
-	// with GitHub with the requested elevated scopes.
-	await supabase.auth.signInWithOAuth({
+	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider: 'google',
+		options: {
+			redirectTo: '/guestbook',
+			queryParams: {
+				access_type: 'offline',
+				prompt: 'consent',
+			},
+		},
 	});
+
+	if (error) {
+		console.error(error);
+	}
+	console.log('data', data);
+	// window.localStorage.setItem('provider_refresh_token', data);
 }
 export async function signOutOAuthUser() {
 	const { error } = await supabase.auth.signOut();
