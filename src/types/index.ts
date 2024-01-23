@@ -27,7 +27,7 @@ export type Project = {
 		paragraph: string;
 	};
 	pinned: boolean;
-	category: 'Front-End' | 'Back-End' | 'Full-Stack' | 'All';
+	category: string;
 };
 
 export type Contact = {

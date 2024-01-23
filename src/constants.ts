@@ -21,7 +21,12 @@ export const PATH_NAME = {
 	projects: 'projects',
 	guestbook: 'guestbook',
 };
-
+export const SUBTITLE = {
+	home: 'Home',
+	about: 'About',
+	project:'Project',
+	guestbook: 'GuestBook',
+}
 export const BUTTON = {
 	contact: {
 		en: 'Contact',

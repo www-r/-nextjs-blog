@@ -19,7 +19,7 @@ export default function Icon({ src, size = 30, animation = false, alt, onClick, 
 				height={size}
 				width={size}
 				style={{ objectFit: 'contain' }}
-				className={animation ? 'float' : ''}
+				className={` ${animation ? 'float' : ''}`}
 			/>
 		</div>
 	);
