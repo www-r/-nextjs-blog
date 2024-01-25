@@ -48,7 +48,6 @@ export async function getFileUrlFromToggle(name: string) {
 	try {
 		const toggle = await getDataToggleArr().then((res) => res.find((item) => item.name === name));
 		const dataBlock = await retrieveBlockChildren(toggle.id);
-		// console.log('testest', dataBlock);
 		if (name === 'image') {
 			const profileImgToggleId = dataBlock.results[0].id;
 			const res = await retrieveBlockChildren(profileImgToggleId);
@@ -83,7 +82,6 @@ export async function readJsonFile(url: string) {
 export async function getUploadedProjectsTitle(): Promise<string[]> {
 	try {
 		const response = await queryDatabaseByTitle('', 'projects');
-		// console.log('projectsDB', response);
 		const titleArr = await Promise.all(response?.results.map(async (item) => await retrievePage(item.id)))
 			//@ts-ignore
 			.then((res) => res.map((item) => item.properties))
@@ -106,7 +104,6 @@ export async function createProjectDataArr(titleArr: string[]): Promise<Project[
 				const childPageBlockId = await retrieveBlockChildren(res.results[0].id)
 					.then((res) => res.results.filter((item) => (item as ChildPageBlockObjectResponse).type === 'child_page'))
 					.then((res) => res[0].id);
-				// console.log('childPageBlockArr', childPageBlockId);
 
 				const toggleBlockResponseArr = pageBlockArr.results.filter(
 					(item) => (item as ToggleBlockObjectResponse).type === 'toggle'

@@ -10,4 +10,4 @@ export { default as Label } from './label.svg';
 export { default as Tistory } from './tistory.png';
 export { default as Naver } from './naver.png';
 
-export { default as Comment } from './comment.svg';
+export { default as Logout } from './logout.svg';
