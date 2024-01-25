@@ -41,4 +41,5 @@ export type CommentData = {
 	message: string;
 	author: string;
 	is_locked: boolean;
+	user_id:string;
 };
