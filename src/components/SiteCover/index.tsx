@@ -35,8 +35,8 @@ export default function SiteCover() {
 				</div>
 				<div className="inner w-full flex-row--evenly mt-10">
 					<Button message={BUTTON.contact} type="contact" href="#contact" />
-					<Button message={BUTTON.resume} type="resume" href={URL.resume} />
-					<Button message={BUTTON.letter} type="letter" href={URL.letter} />
+					<Button message={BUTTON.resume} type="resume" href={''} />
+					<Button message={BUTTON.letter} type="letter" href={''} />
 				</div>
 				<div className="flex">
 					<Icon src={ArrowDown} alt="" animation size={50} />
