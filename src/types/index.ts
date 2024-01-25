@@ -41,5 +41,11 @@ export type CommentData = {
 	message: string;
 	author: string;
 	is_locked: boolean;
-	user_id:string;
+	password: string;
+	user_id: string;
+};
+export type User = {
+	aud: string;
+	email: string;
+	id: string;
 };
