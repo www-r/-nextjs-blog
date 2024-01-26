@@ -2,7 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import './styles.css';
-export default function FlipCard({ children, img }) {
+
+export default function FlipCard({ children, img, front = 'icon' }) {
 	function clickHandler(e) {
 		e.target.closest('.container').classList.contains('rotate')
 			? e.target.closest('.container').classList.remove('rotate')
@@ -14,11 +15,15 @@ export default function FlipCard({ children, img }) {
 			<div className="card-wrapper">
 				{/* //front */}
 				<div className={`flip-card front`}>
-						<Image src={img} alt="" className="front-image" width={70} height={70} />
+					{front === 'icon' ? (
+						<Image src={img} alt="" className="front-icon" width={70} height={70} />
+					) : (
+						<Image src={img} alt="" className="front-image" width={500} height={600} />
+					)}
 				</div>
 				{/* //back */}
 				<div className={`flip-card back`}>
-					<div className='content'>{children}</div>
+					<div className="content ">{children}</div>
 				</div>
 			</div>
 		</div>

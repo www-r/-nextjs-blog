@@ -18,14 +18,14 @@ export default function SiteCover() {
 	// }
 
 	return (
-		<section className="section h-[50vw] min-h-[60rem] align-center pb-[4rem] transition-[height_1s_ease-in-out]">
+		<section className="section h-[55vw] min-h-[60rem] align-center pb-[4rem] transition-[height_1s_ease-in-out]">
 			<div className="section-container w-full flex-cols items-center">
 				<div className="">
 					<Image
 						src="/cover.png"
 						alt="Main Page Picture"
 						width={1000}
-						height={300}
+						height={270}
 						style={{ objectFit: 'cover', objectPosition: 'center' }}
 						priority
 					/>

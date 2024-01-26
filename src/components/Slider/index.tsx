@@ -67,20 +67,25 @@ export default function Slider({ children, type = '', height }: Props) {
 			);
 		case 'project':
 			const responsive2 = {
+				fullScreen: {
+					breakpoint: { max: 3000, min: 1400 },
+					items: 4,
+					//slidesToSlide:
+				},
 				desktop: {
-					breakpoint: { max: 3000, min: 1024 },
+					breakpoint: { max: 1400, min: 1024 },
 					items: 3,
-					slidesToSlide: 3, // optional, default to 1.
+					//slidesToSlide: 3, // optional, default to 1.
 				},
 				tablet: {
 					breakpoint: { max: 1024, min: 464 },
 					items: 2,
-					slidesToSlide: 2, // optional, default to 1.
+					//slidesToSlide: 2, // optional, default to 1.
 				},
 				mobile: {
 					breakpoint: { max: 464, min: 0 },
 					items: 1,
-					slidesToSlide: 1, // optional, default to 1.
+					//slidesToSlide: 1, // optional, default to 1.
 				},
 			};
 			return (
@@ -91,8 +96,8 @@ export default function Slider({ children, type = '', height }: Props) {
 					infinite
 					removeArrowOnDeviceType={['tablet', 'mobile']}
 					containerClass="my-10 py-10 w-full "
-					sliderClass=" flex gap-0 "
-					itemClass="center"
+					sliderClass=" flex"
+					itemClass="center w-fit"
 					centerMode
 				>
 					{children}

@@ -14,48 +14,57 @@ export default async function AboutPage() {
 		<Page className="bg-ivory">
 			<Section>
 				<SubTitle>{SUBTITLE.about}</SubTitle>
-				<div className="inner flex justify-center">
+				<div className="inner grid grid-cols-2 ">
 					<div className="flex-cols items-center justify-evenly gap-10 p-8 ">
-						<div className="w-full flex justify-between">
+						<FlipCard img="/profile.jpeg" front="photo">
 							<Image
 								className=""
-								src="/profile.jpeg"
+								src="/profile-1.jpeg"
 								alt="Profile Picture"
-								width={250}
-								height={250}
-								style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '1rem' }}
+								width={600}
+								height={400}
+								style={{ objectFit: 'cover', objectPosition: 'center' }}
 							/>
-							<div className="text-lg">
-								<p>안녕하세요</p>
-								<p>우리가 중요한 개발자</p>
-								<p>김영은입니다. </p>
-							</div>
-						</div>
-
+						</FlipCard>
 						<img src="https://ghchart.rshah.org/www-r" />
 						<div className="w-full flex justify-between">
-							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[25rem]" />
-							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[25rem]" />
+							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[20vw]" />
+							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[20vw]" />
 						</div>
 					</div>
 					<div className="grid grid-cols-2 grid-rows-2 gap-y-8 p-8 ">
 						<FlipCard img={Increasing}>
-							<>
+							<div className="text-md">
 								<h5>Profile</h5>
-								<div>
-									<p>이름: 김영은</p>
-									<p>나이: 만25세</p>
-									<p>주소: 서울특별시 용산구 이촌동</p>
-									<p>MBTI: INTP , ENTP 그 사이 어딘가</p>
-								
+								<div className="font-medium text-center">
+									<p>
+										이름
+										<br />
+										김영은
+									</p>
+									<p>
+										나이
+										<br />
+										만25세
+									</p>
+									<p>
+										주소
+										<br />
+										서울특별시 용산구 이촌동
+									</p>
+									<p>
+										MBTI
+										<br />
+										INTP , ENTP 그 사이 어딘가
+									</p>
 								</div>
-							</>
+							</div>
 						</FlipCard>
 						<FlipCard img={Graduation}>
 							{
-								<>
+								<div className="text-md">
 									<h5>Educations</h5>
-									<div className="flex-cols">
+									<div className="flex-cols font-medium">
 										<span>대학교</span>
 										<span>2017.3 ~ 2020.9</span>
 										<span>일어일문학과 전공</span>
@@ -70,7 +79,7 @@ export default async function AboutPage() {
 										<span>2023.10 ~ 2023.11</span>
 										<p></p>
 									</div>
-								</>
+								</div>
 							}
 						</FlipCard>
 						<FlipCard img={Cat}>
@@ -78,7 +87,7 @@ export default async function AboutPage() {
 						</FlipCard>
 
 						<FlipCard img={Books}>
-							<>
+							<div className="text-md font-medium">
 								<h5>Study</h5>
 								<ul>
 									<span>노션</span>
@@ -97,7 +106,7 @@ export default async function AboutPage() {
 										<p></p>
 									</li>
 								</ul>
-							</>
+							</div>
 						</FlipCard>
 					</div>
 				</div>
