@@ -1,12 +1,16 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Label from '@components/Label';
 import FormCover from '@components/FormCover';
 // import Button from '../Button';
-import { insertRow, signInOAuthUser } from '@/service/supabase';
+import { insertRow, retrieveSession, signInOAuthUser } from '@/service/supabase';
 import { formatDate } from '@/utils/formatDate';
+import useHover from '@/hooks/useHover';
+import { User } from '@/types';
 // import { useHover } from '@uidotdev/usehooks';
-export default function Form() {
+
+export default function Form({ isAuthorized }) {
+	const [user, setUser] = useState<User>();
 	const time = formatDate();
 	const authorRef = useRef(null);
 	const dateRef = useRef(null);
@@ -14,8 +18,9 @@ export default function Form() {
 	const passwordRef = useRef(null);
 	const checkboxRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
-	const [isAuthorized, setIsAuthorized] = useState(false);
+	// const [isAuthorized, setIsAuthorized] = useState(false);
 	// const [ref, hovering] = useHover();
+
 	function checkboxHandler() {
 		setIsPasswordDisabled(!isPasswordDisabled);
 	}
@@ -26,27 +31,23 @@ export default function Form() {
 			message: messageRef.current.value,
 			password: passwordRef.current.value ? passwordRef.current.value : null,
 			is_locked: passwordRef.current.value ? true : false,
+			user_id: user.id,
 		};
 	}
 	async function submitHandler() {
-		const data = getCommentData();
-		await insertRow(data);
-	}
-	async function buttonClickHandler() {
-		await signInOAuthUser();
-	}
-	useEffect(() => {
-		function checkIfAuthorized() {
-			if (
-				window.localStorage.getItem('oauth_provider_token') &&
-				window.localStorage.getItem('oauth_provider_refresh_token')
-			) {
-				return true;
-			} else false;
+		if (authorRef.current.value && messageRef.current.value) {
+			const data = getCommentData();
+			await insertRow(data);
+		} else {
+			alert('작성자와 메세지를 작성해주세요.');
 		}
-		setIsAuthorized(checkIfAuthorized());
-	}, [isAuthorized]);
+	}
+	const buttonClickHandler = useCallback(async () => await signInOAuthUser(), []);
 
+	useEffect(() => {
+		const userInfo = JSON.parse(window.localStorage.getItem('user'));
+		setUser(userInfo);
+	}, []);
 	return (
 		<form action="" className="mt-3 text-xs relative bg-white/60 rounded-md opacity-100 p-3">
 			{!isAuthorized && <FormCover className="hover:bg-white/80" buttonClickHandler={buttonClickHandler} />}
@@ -55,9 +56,10 @@ export default function Form() {
 					<Label htmlFor="author-name">작성자</Label>
 					<input
 						id="author-name"
-						placeholder="누구신가요?"
+						// placeholder="누구신가요?"
+						placeholder="              "
 						maxLength={15}
-						className="underline decoration-[0.09rem]"
+						className="underline decoration-[0.09rem] bg-transparent focus:bg-white"
 						required
 						ref={authorRef}
 					/>
@@ -73,8 +75,8 @@ export default function Form() {
 				<div className="p-2">
 					<Label htmlFor="input--message">메세지</Label>
 					<textarea
-						className="w-full underline decoration-[0.09rem] border border-solid p-2 "
-						placeholder="메세지를 입력해주세요"
+						className="w-full underline decoration-[0.09rem] border border-solid p-2 bg-transparent focus:bg-white "
+						// placeholder="메세지를 입력해주세요"
 						rows={2}
 						minLength={1}
 						maxLength={100}
@@ -88,7 +90,7 @@ export default function Form() {
 					<div className="p-2">
 						<Label htmlFor="secret">비밀글</Label>
 						<input
-							className="underline decoration-[0.09rem] "
+							className="underline decoration-[0.09rem] bg-transparent focus:bg-white "
 							type="text"
 							id="secret"
 							placeholder="숫자 6개를 입력해주세요"
@@ -106,7 +108,7 @@ export default function Form() {
 						/>
 					</div>
 					<button className=" w-full pt-10 px-2" type="submit" onClick={submitHandler}>
-						<p className="border-b border-solid">등록하기</p>
+						<p className="border-b border-solid">보내기</p>
 					</button>
 				</div>
 			</div>
