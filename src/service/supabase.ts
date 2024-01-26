@@ -50,7 +50,7 @@ export async function signInOAuthUser() {
 	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider: 'google',
 		options: {
-			redirectTo: 'http://localhost:3000/guestbook',
+			redirectTo: 'https://kimyoungen.com/guestbook',
 			queryParams: {
 				access_type: 'offline',
 				prompt: 'consent',
