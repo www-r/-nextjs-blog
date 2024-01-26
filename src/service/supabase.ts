@@ -57,7 +57,20 @@ export async function signInOAuthUser() {
 			},
 		},
 	});
+	if (error) {
+		console.error(error);
+	}
 }
+export async function signOutOAuthUser() {
+	const { error } = await supabase.auth.signOut();
+	alert('로그아웃되었습니다.');
+	if (error) {
+		console.error(error);
+	} else {
+		window.location.reload();
+	}
+}
+
 export function setSession(session) {
 	if (session && session.provider_token) {
 		window.localStorage.setItem('oauth_provider_token', session.provider_token);
@@ -67,14 +80,6 @@ export function setSession(session) {
 	if (session && session.provider_refresh_token) {
 		window.localStorage.setItem('oauth_provider_refresh_token', session.provider_refresh_token);
 		console.log('set_refresh');
-	}
-}
-
-export async function signOutOAuthUser() {
-	const { error } = await supabase.auth.signOut();
-	alert('로그아웃되었습니다.');
-	if (error) {
-		console.error(error);
 	}
 }
 
