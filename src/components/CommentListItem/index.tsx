@@ -46,7 +46,7 @@ export default function CommentListItem({ data }: Props) {
 				setIsAuthor(true);
 			}
 		}
-	}, []);
+	});
 	return (
 		<li className=" border border-solid rounded-sm  p-4 mx-2 my-1 grid grid-cols-[9fr_1fr]">
 			<div>

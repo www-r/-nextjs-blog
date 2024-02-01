@@ -27,6 +27,7 @@ export default function Form({ isAuthorized }) {
 	function getCommentData() {
 		if (user) {
 			return {
+				id: '',
 				author: authorRef.current.value,
 				created_at: dateRef.current.innerText,
 				message: messageRef.current.value,

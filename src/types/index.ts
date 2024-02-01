@@ -36,6 +36,7 @@ export type Contact = {
 };
 
 export type CommentData = {
+	id: string;
 	created_at: string;
 	message: string;
 	author: string;
