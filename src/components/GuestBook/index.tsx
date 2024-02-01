@@ -17,10 +17,10 @@ export default function GuestBook() {
 	useEffect(() => {
 		getDatabaseData().then((dataArr) => {
 			const sorted = dataArr.reverse();
+			console.log('dataArr:', dataArr);
 			setDataArr(sorted);
-			
 		});
-	}, []);
+	}, [dataArr]);
 
 	useEffect(() => {
 		checkIfAuthorized();
