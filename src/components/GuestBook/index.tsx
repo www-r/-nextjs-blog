@@ -18,6 +18,7 @@ export default function GuestBook() {
 		getDatabaseData().then((dataArr) => {
 			const sorted = dataArr.reverse();
 			setDataArr(sorted);
+			
 		});
 	}, []);
 

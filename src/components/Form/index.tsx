@@ -44,6 +44,7 @@ export default function Form({ isAuthorized }) {
 				const res = await insertRow(data);
 				console.log(res);
 				alert('전송되었습니다.submitHandler');
+				window.location.reload();
 			} catch (error) {
 				console.log(error);
 				alert('전송에 실패했습니다submitHandler');
