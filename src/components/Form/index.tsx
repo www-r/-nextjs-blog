@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Label from '@components/Label';
 import FormCover from '@components/FormCover';
 // import Button from '../Button';
-import { insertRow, signInOAuthUser } from '@/service/supabase';
+import { insertRow, signInOAuthUser, upsertRow } from '@/service/supabase';
 import { formatDate } from '@/utils/formatDate';
 // import useHover from '@/hooks/useHover';
 import { User } from '@/types';
@@ -13,12 +13,12 @@ export default function Form({ isAuthorized }) {
 	const [user, setUser] = useState<User>();
 	const time = formatDate();
 	const authorRef = useRef(null);
-	const dateRef = useRef(null);
+
 	const messageRef = useRef(null);
 	const passwordRef = useRef(null);
 	const checkboxRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
-	// const [isAuthorized, setIsAuthorized] = useState(false);
+
 	// const [ref, hovering] = useHover();
 
 	function checkboxHandler() {
@@ -27,9 +27,8 @@ export default function Form({ isAuthorized }) {
 	function getCommentData() {
 		if (user) {
 			return {
-				id: '',
 				author: authorRef.current.value,
-				created_at: dateRef.current.innerText,
+				created_at: time,
 				message: messageRef.current.value,
 				password: passwordRef.current.value ? passwordRef.current.value : null,
 				is_locked: passwordRef.current.value ? true : false,
@@ -41,20 +40,24 @@ export default function Form({ isAuthorized }) {
 		if (authorRef.current.value && messageRef.current.value) {
 			const data = getCommentData();
 			try {
-				await insertRow(data);
+				const res = await insertRow(data);
+				console.log(res);
+				alert('전송되었습니다.');
 			} catch (error) {
-				alert('전송에 실패했습니다.:' + error.message);
+				console.log(error);
+				alert('전송에 실패했습니다.....');
 			}
 		} else {
-			alert('작성자와 메세지를 작성해주세요.');
+			alert('작성자와 메세지를 채워주세요.');
 		}
 	}
 	const buttonClickHandler = useCallback(async () => await signInOAuthUser(), []);
 
 	useEffect(() => {
 		const userInfo = JSON.parse(window.localStorage.getItem('user'));
+		console.log('user info', userInfo);
 		setUser(userInfo);
-	}); // []있으면 메세지가 안 보내진다.
+	}, []); // []있으면 메세지가 안 보내진다.
 	return (
 		<form action="" className="mt-3 text-xs relative bg-white/60 rounded-md opacity-100 p-3">
 			{!isAuthorized && <FormCover className="hover:bg-white/80" buttonClickHandler={buttonClickHandler} />}
@@ -73,7 +76,7 @@ export default function Form({ isAuthorized }) {
 				</div>
 				<div className="p-2">
 					<Label htmlFor="date">날짜</Label>
-					<time id="date" className="underline decoration-[0.09rem] " ref={dateRef}>
+					<time dateTime={time} id="date" className="underline decoration-[0.09rem] ">
 						{time}
 					</time>
 				</div>
@@ -114,7 +117,7 @@ export default function Form({ isAuthorized }) {
 							onChange={checkboxHandler}
 						/>
 					</div>
-					<button className=" w-full pt-10 px-2" type="submit" onClick={submitHandler}>
+					<button className=" w-full pt-10 px-2" type="submit" onClick={async () => await submitHandler()}>
 						<p className="border-b border-solid">보내기</p>
 					</button>
 				</div>
