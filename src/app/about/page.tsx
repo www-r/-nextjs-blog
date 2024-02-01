@@ -46,9 +46,9 @@ export default async function AboutPage() {
 								김영은
 							</p>
 							<p>
-								나이
+								생년월일
 								<br />
-								만25세
+								1998.08.28
 							</p>
 							<p>
 								주소
