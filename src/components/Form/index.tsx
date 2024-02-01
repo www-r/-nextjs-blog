@@ -36,19 +36,20 @@ export default function Form({ isAuthorized }) {
 			};
 		}
 	}
-	async function submitHandler() {
+	async function submitHandler(e) {
+		e.preventDefault();
 		if (authorRef.current.value && messageRef.current.value) {
 			const data = getCommentData();
 			try {
 				const res = await insertRow(data);
 				console.log(res);
-				alert('전송되었습니다.');
+				alert('전송되었습니다.submitHandler');
 			} catch (error) {
 				console.log(error);
-				alert('전송에 실패했습니다.....');
+				alert('전송에 실패했습니다submitHandler');
 			}
 		} else {
-			alert('작성자와 메세지를 채워주세요.');
+			alert('작성자와 메세지를 채워주세요.submitHandler');
 		}
 	}
 	const buttonClickHandler = useCallback(async () => await signInOAuthUser(), []);
@@ -117,7 +118,7 @@ export default function Form({ isAuthorized }) {
 							onChange={checkboxHandler}
 						/>
 					</div>
-					<button className=" w-full pt-10 px-2" type="submit" onClick={async () => await submitHandler()}>
+					<button className=" w-full pt-10 px-2" type="submit" onClick={async (e) => await submitHandler(e)}>
 						<p className="border-b border-solid">보내기</p>
 					</button>
 				</div>

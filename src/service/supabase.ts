@@ -14,21 +14,15 @@ export async function getDatabaseData(): Promise<CommentData[]> {
 // INSERT A ROW
 export async function insertRow(input: CommentData) {
 	if (input) {
-		try {
-			const { error } = await supabase.from(DB_TABLE_NAME).insert(input);
-			console.log(error);
-			if (!error) {
-				// console.log('insertRow:', data);
-				alert('전송되었습니다.sss ');
-			} else {
-				alert('메세지 전송에 실패했습니다.bbb ');
-			}
-		} catch (error) {
-			alert('메세지 전송에 실패했습니다.dad');
-			console.error(error);
+		const { error } = await supabase.from(DB_TABLE_NAME).insert(input);
+		console.log(error);
+		if (!error) {
+			alert('전송되었습니다.insertrow');
+		} else {
+			alert('메세지 전송에 실패했습니다.insertrow ');
 		}
 	} else {
-		alert('메세지를 채워주세요.');
+		alert('메세지를 채워주세요.insertrow');
 	}
 }
 // UPSERT MATCHING ROW
