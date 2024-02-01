@@ -7,7 +7,7 @@ import { getDatabaseData, signInOAuthUser, signOutOAuthUser, userStateSubscripti
 import { CommentData } from '@/types';
 
 export default function GuestBook() {
-	const [isAuthorized, setIsAuthorized] = useState(false);
+	const [isAuthorized, setIsAuthorized] = useState<boolean>();
 	const [dataArr, setDataArr] = useState<CommentData[]>([]);
 	function checkIfAuthorized() {
 		if (localStorage.getItem('user')) {

@@ -22,6 +22,9 @@ export default function Form({ isAuthorized }) {
 	// const [ref, hovering] = useHover();
 
 	function checkboxHandler() {
+		if (isPasswordDisabled) {
+			passwordRef.current.value = null;
+		}
 		setIsPasswordDisabled(!isPasswordDisabled);
 	}
 	function getCommentData() {
@@ -43,14 +46,14 @@ export default function Form({ isAuthorized }) {
 			try {
 				const res = await insertRow(data);
 				console.log(res);
-				alert('전송되었습니다.submitHandler');
+				alert('전송되었습니다.');
 				window.location.reload();
 			} catch (error) {
 				console.log(error);
-				alert('전송에 실패했습니다submitHandler');
+				alert('전송에 실패했습니다');
 			}
 		} else {
-			alert('작성자와 메세지를 채워주세요.submitHandler');
+			alert('작성자와 메세지를 채워주세요.');
 		}
 	}
 	const buttonClickHandler = useCallback(async () => await signInOAuthUser(), []);
