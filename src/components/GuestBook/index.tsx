@@ -15,8 +15,8 @@ export default function GuestBook() {
 		}
 	}
 	useEffect(() => {
-		getDatabaseData().then((data) => {
-			const sorted = data.sort((a, b) => b - a);
+		getDatabaseData().then((dataArr) => {
+			const sorted = dataArr.reverse();
 			setDataArr(sorted);
 		});
 	}, []);
@@ -24,7 +24,7 @@ export default function GuestBook() {
 	useEffect(() => {
 		checkIfAuthorized();
 		userStateSubscription();
-	}, []);
+	});
 	return (
 		<div>
 			<div className=" inner">
