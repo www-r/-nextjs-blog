@@ -1,21 +1,14 @@
 'use client';
 import '@/animation/fadeSlide.css';
 import './styles.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Icon from '../Icon';
-import { BUTTON, URL } from '@/constants';
+import { BUTTON } from '@/constants';
 import ArrowDown from '@/assets/arrow-down.png';
 import Button from '@components/Button';
 export default function SiteCover() {
-	const randomNumber = Math.random();
-
 	const [text, setText] = useState<string>('');
-
-	// for (let i = 0; i < PROFILE_TEXT.main.length; i++) {
-	// 	console.log(text);
-	// 	setText(text + PROFILE_TEXT.main.charAt(i));
-	// }
 
 	return (
 		<section className="section  min-h-[60rem] align-center pb-[4rem] transition-[height_1s_ease-in-out]">
