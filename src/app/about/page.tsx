@@ -33,10 +33,10 @@ export default async function AboutPage() {
 						</p>
 
 						<img src="https://ghchart.rshah.org/www-r" className="my-5" />
-						<div className="w-full flex justify-center gap-[10rem] mt-5">
+						{/* <div className="w-full flex justify-center gap-[10rem] mt-5">
 							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[15rem]" />
 							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[15rem]" />
-						</div>
+						</div> */}
 					</div>
 					<div className="grid grid-cols-2 grid-rows-2 gap-y-8 p-8 ">
 						<FlipCard img={Increasing} title="Profile">
