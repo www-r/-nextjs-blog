@@ -10,7 +10,7 @@ import { User } from '@/types';
 // import { useHover } from '@uidotdev/usehooks';
 
 export default function Form({ isAuthorized }) {
-	const [user, setUser] = useState<User>();
+	const [user, setUser] = useState<User>(JSON.parse(window.localStorage.getItem('user')));
 	const time = formatDate();
 	const authorRef = useRef(null);
 	const dateRef = useRef(null);
@@ -25,19 +25,25 @@ export default function Form({ isAuthorized }) {
 		setIsPasswordDisabled(!isPasswordDisabled);
 	}
 	function getCommentData() {
-		return {
-			author: authorRef.current.value,
-			created_at: dateRef.current.innerText,
-			message: messageRef.current.value,
-			password: passwordRef.current.value ? passwordRef.current.value : null,
-			is_locked: passwordRef.current.value ? true : false,
-			user_id: user.id,
-		};
+		if (user) {
+			return {
+				author: authorRef.current.value,
+				created_at: dateRef.current.innerText,
+				message: messageRef.current.value,
+				password: passwordRef.current.value ? passwordRef.current.value : null,
+				is_locked: passwordRef.current.value ? true : false,
+				user_id: user.id,
+			};
+		}
 	}
 	async function submitHandler() {
 		if (authorRef.current.value && messageRef.current.value) {
 			const data = getCommentData();
-			await insertRow(data);
+			try {
+				await insertRow(data);
+			} catch (error) {
+				alert('전송에 실패했습니다.:' + error.message);
+			}
 		} else {
 			alert('작성자와 메세지를 작성해주세요.');
 		}
@@ -47,7 +53,7 @@ export default function Form({ isAuthorized }) {
 	useEffect(() => {
 		const userInfo = JSON.parse(window.localStorage.getItem('user'));
 		setUser(userInfo);
-	}, []);
+	}); // []있으면 메세지가 안 보내진다.
 	return (
 		<form action="" className="mt-3 text-xs relative bg-white/60 rounded-md opacity-100 p-3">
 			{!isAuthorized && <FormCover className="hover:bg-white/80" buttonClickHandler={buttonClickHandler} />}
