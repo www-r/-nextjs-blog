@@ -20,7 +20,7 @@ export default function GuestBook() {
 			console.log('dataArr:', dataArr);
 			setDataArr(sorted);
 		});
-	}, [dataArr]);
+	}, []);
 
 	useEffect(() => {
 		checkIfAuthorized();
