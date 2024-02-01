@@ -14,10 +14,18 @@ export default function GuestBook() {
 			setIsAuthorized(true);
 		}
 	}
+	const loginHandler = async () => {
+		await signInOAuthUser();
+		setIsAuthorized(true);
+	};
+	const logoutHandler = async () => {
+		await signOutOAuthUser();
+		setIsAuthorized(false);
+	};
+
 	useEffect(() => {
 		getDatabaseData().then((dataArr) => {
 			const sorted = dataArr.reverse();
-			console.log('dataArr:', dataArr);
 			setDataArr(sorted);
 		});
 	}, []);
@@ -31,9 +39,9 @@ export default function GuestBook() {
 			<div className=" inner">
 				<div className="flex justify-end font-bold">
 					{isAuthorized ? (
-						<Button onClick={async () => await signOutOAuthUser()}>로그아웃하기</Button>
+						<Button onClick={logoutHandler}>로그아웃하기</Button>
 					) : (
-						<Button onClick={async () => await signInOAuthUser()}>로그인하기</Button>
+						<Button onClick={loginHandler}>로그인하기</Button>
 					)}
 				</div>
 				<Form isAuthorized={isAuthorized} />
