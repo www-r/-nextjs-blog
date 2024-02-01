@@ -3,14 +3,14 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Label from '@components/Label';
 import FormCover from '@components/FormCover';
 // import Button from '../Button';
-import { insertRow, retrieveSession, signInOAuthUser } from '@/service/supabase';
+import { insertRow, signInOAuthUser } from '@/service/supabase';
 import { formatDate } from '@/utils/formatDate';
-import useHover from '@/hooks/useHover';
+// import useHover from '@/hooks/useHover';
 import { User } from '@/types';
 // import { useHover } from '@uidotdev/usehooks';
 
 export default function Form({ isAuthorized }) {
-	const [user, setUser] = useState<User>(JSON.parse(window.localStorage.getItem('user')));
+	const [user, setUser] = useState<User>();
 	const time = formatDate();
 	const authorRef = useRef(null);
 	const dateRef = useRef(null);
