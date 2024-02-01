@@ -19,7 +19,7 @@ export default function GuestBook() {
 			const sorted = dataArr.reverse();
 			setDataArr(sorted);
 		});
-	}, []);
+	});
 
 	useEffect(() => {
 		checkIfAuthorized();
@@ -28,7 +28,6 @@ export default function GuestBook() {
 	return (
 		<div>
 			<div className=" inner">
-				{/* <h2 className="text-2xl mt-10 border-b border-solid">Guest Book</h2> */}
 				<div className="flex justify-end font-bold">
 					{isAuthorized ? (
 						<Button onClick={async () => await signOutOAuthUser()}>로그아웃하기</Button>

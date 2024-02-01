@@ -1,8 +1,9 @@
 import { supabase } from '@/service';
 import { CommentData } from '@/types';
+
 const DB_TABLE_NAME = 'guestbook';
 
-export async function getDatabaseData() {
+export async function getDatabaseData(): Promise<CommentData[]> {
 	let { data: guestbook, error } = await supabase.from(DB_TABLE_NAME).select('*', { count: 'estimated' }).range(0, 10);
 	if (error) {
 		console.error(error);
@@ -14,37 +15,40 @@ export async function getDatabaseData() {
 export async function insertRow(input: CommentData) {
 	if (input) {
 		try {
-			const { data, error } = await supabase.from(DB_TABLE_NAME).insert([input]).select();
-			if (data) {
+			const { error } = await supabase.from(DB_TABLE_NAME).insert(input);
+			if (!error) {
 				console.log('insertRow:', data);
-				alert('전송되었습니다. ');
+				alert('전송되었습니다.sss ');
 			} else {
-				alert('메세지 전송에 실패했습니다. ');
+				alert('메세지 전송에 실패했습니다.bbb ');
 			}
 		} catch (error) {
-			alert('메세지 전송에 실패했습니다.');
+			alert('메세지 전송에 실패했습니다.dad');
 			console.error(error);
 		}
 	} else {
 		alert('메세지를 채워주세요.');
 	}
 }
+// UPSERT MATCHING ROW
+export async function upsertRow(input: CommentData) {
+	try {
+		const { data, status } = await supabase.from(DB_TABLE_NAME).upsert(input).select();
+		console.log('Upsert', data);
+		console.log('', status);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 // INSERT MANY ROWS
-export async function insertManyRows(dataArr) {
-	const { data, error } = await supabase.from(DB_TABLE_NAME).insert(dataArr).select();
-	if (error) {
-		console.error(error);
-	}
-}
-// UPSERT MATCHING ROWS
-export async function upsertMatchingRows() {
-	const { data, error } = await supabase.from(DB_TABLE_NAME).upsert({ some_column: 'someValue' }).select();
-	if (error) {
-		console.error(error);
-	} else {
-		return data;
-	}
-}
+// export async function insertManyRows(dataArr) {
+// 	const { data, error } = await supabase.from(DB_TABLE_NAME).insert(dataArr).select();
+// 	if (error) {
+// 		console.error(error);
+// 	}
+// }
+
 // DELETE ROW
 export async function deleteSelectedRow(id: string) {
 	const { error } = await supabase.from(DB_TABLE_NAME).delete().eq('id', id);
