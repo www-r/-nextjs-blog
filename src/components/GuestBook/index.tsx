@@ -19,7 +19,7 @@ export default function GuestBook() {
 			const sorted = dataArr.reverse();
 			setDataArr(sorted);
 		});
-	});
+	}, []);
 
 	useEffect(() => {
 		checkIfAuthorized();
