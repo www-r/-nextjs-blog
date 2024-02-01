@@ -2,12 +2,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Label from '@components/Label';
 import FormCover from '@components/FormCover';
-// import Button from '../Button';
-import { insertRow, signInOAuthUser, upsertRow } from '@/service/supabase';
+import { insertRow, signInOAuthUser } from '@/service/supabase';
 import { formatDate } from '@/utils/formatDate';
-// import useHover from '@/hooks/useHover';
 import { User } from '@/types';
-// import { useHover } from '@uidotdev/usehooks';
+
 
 export default function Form({ isAuthorized }) {
 	const [user, setUser] = useState<User>();
@@ -19,7 +17,6 @@ export default function Form({ isAuthorized }) {
 	const checkboxRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
 
-	// const [ref, hovering] = useHover();
 
 	function checkboxHandler() {
 		if (isPasswordDisabled) {
@@ -45,7 +42,7 @@ export default function Form({ isAuthorized }) {
 			const data = getCommentData();
 			try {
 				const res = await insertRow(data);
-				console.log(res);
+
 				alert('전송되었습니다.');
 				window.location.reload();
 			} catch (error) {
@@ -60,7 +57,6 @@ export default function Form({ isAuthorized }) {
 
 	useEffect(() => {
 		const userInfo = JSON.parse(window.localStorage.getItem('user'));
-		console.log('user info', userInfo);
 		setUser(userInfo);
 	}, []); // []있으면 메세지가 안 보내진다.
 	return (
@@ -71,7 +67,6 @@ export default function Form({ isAuthorized }) {
 					<Label htmlFor="author-name">작성자</Label>
 					<input
 						id="author-name"
-						// placeholder="누구신가요?"
 						placeholder="              "
 						maxLength={15}
 						className="underline decoration-[0.09rem] bg-transparent focus:bg-white"
@@ -91,14 +86,12 @@ export default function Form({ isAuthorized }) {
 					<Label htmlFor="input--message">메세지</Label>
 					<textarea
 						className="w-full underline decoration-[0.09rem] border border-solid p-2 bg-transparent focus:bg-white "
-						// placeholder="메세지를 입력해주세요"
 						rows={2}
 						minLength={1}
 						maxLength={100}
 						required
 						id="input--message"
 						ref={messageRef}
-						// onChange={}
 					/>
 				</div>
 				<div>

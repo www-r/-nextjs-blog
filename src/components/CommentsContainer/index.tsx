@@ -7,7 +7,7 @@ function CommentsContainer({ dataArr }) {
 		<ul>
 			{dataArr.length !== 0
 				? dataArr?.map((data: CommentData) => <CommentListItem data={data} key={data.id} />)
-				: 'loading'}
+				: '메세지가 없습니다.'}
 		</ul>
 	);
 }
