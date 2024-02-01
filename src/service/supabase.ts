@@ -1,4 +1,5 @@
-import { supabase } from '@/database/supabase';
+import { supabase } from '@/service';
+import { CommentData } from '@/types';
 const DB_TABLE_NAME = 'guestbook';
 
 export async function getDatabaseData() {
@@ -6,22 +7,26 @@ export async function getDatabaseData() {
 	if (error) {
 		console.error(error);
 	} else {
-		console.log(guestbook);
 		return guestbook;
 	}
 }
 // INSERT A ROW
-export async function insertRow(input) {
+export async function insertRow(input: CommentData) {
 	if (input) {
 		try {
 			const { data, error } = await supabase.from(DB_TABLE_NAME).insert([input]).select();
-			console.log('insertRow:', data);
-			alert('작성되었습니다.');
+			if (data) {
+				console.log('insertRow:', data);
+				alert('전송되었습니다. ');
+			} else {
+				alert('메세지 전송에 실패했습니다. ');
+			}
 		} catch (error) {
+			alert('메세지 전송에 실패했습니다.');
 			console.error(error);
 		}
 	} else {
-		console.log(input);
+		alert('메세지를 채워주세요.');
 	}
 }
 // INSERT MANY ROWS
@@ -37,7 +42,6 @@ export async function upsertMatchingRows() {
 	if (error) {
 		console.error(error);
 	} else {
-		console.log('upsertMatchingRow:', data);
 		return data;
 	}
 }
@@ -62,24 +66,23 @@ export async function signInOAuthUser() {
 	}
 }
 export async function signOutOAuthUser() {
-	const { error } = await supabase.auth.signOut();
-	alert('로그아웃되었습니다.');
-	if (error) {
-		console.error(error);
-	} else {
+	try {
+		const { error } = await supabase.auth.signOut();
+		alert('로그아웃되었습니다.');
 		window.location.reload();
+	} catch (error) {
+		alert('로그아웃에 실패했습니다.');
+		console.log(error);
 	}
 }
 
 export function setSession(session) {
 	if (session && session.provider_token) {
 		window.localStorage.setItem('oauth_provider_token', session.provider_token);
-		console.log('set');
 	}
 
 	if (session && session.provider_refresh_token) {
 		window.localStorage.setItem('oauth_provider_refresh_token', session.provider_refresh_token);
-		console.log('set_refresh');
 	}
 }
 
@@ -87,7 +90,7 @@ export async function retrieveUser() {
 	const {
 		data: { user },
 	} = await supabase.auth.getUser();
-	console.log('user', user);
+
 	return user;
 }
 
@@ -96,7 +99,6 @@ export async function retrieveSession() {
 	if (error) {
 		console.error(error);
 	}
-	console.log('retrieveSession', data);
 }
 export async function retrieveNewSession() {
 	const { data, error } = await supabase.auth.refreshSession();
