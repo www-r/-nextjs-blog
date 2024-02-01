@@ -18,7 +18,7 @@ export default function SiteCover() {
 	// }
 
 	return (
-		<section className="section h-[55vw] min-h-[60rem] align-center pb-[4rem] transition-[height_1s_ease-in-out]">
+		<section className="section  min-h-[60rem] align-center pb-[4rem] transition-[height_1s_ease-in-out]">
 			<div className="section-container w-full flex-cols items-center">
 				<div className="">
 					<Image
@@ -39,7 +39,7 @@ export default function SiteCover() {
 					<Button message={BUTTON.letter} type="letter" href={''} />
 				</div>
 				<div className="flex">
-					<Icon src={ArrowDown} alt="" animation size={50} />
+					<Icon src={ArrowDown} alt="" animation size={30} />
 				</div>
 			</div>
 		</section>

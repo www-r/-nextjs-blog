@@ -1,6 +1,6 @@
 import Page from '@components/Page';
 import SubTitle from '@components/SubTitle';
-import ProjectsContent from '@/components/ProjectsContent';
+import ProjectsContent from '@components/ProjectsContent';
 import { getUploadedProjectsTitle, createProjectDataArr } from '@/service/data';
 
 export default async function PostsPage() {

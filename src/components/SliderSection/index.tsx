@@ -11,7 +11,6 @@ import Chevron from '@/assets/arrow_forward.png';
 
 export default async function SliderSection() {
 	try {
-		const a = getFileUrlFromToggle('image');
 		const fileUrl = await getFileUrlFromToggle('skill');
 		const skillDataArr = await readJsonFile(fileUrl);
 		const randomNumber = Math.random();
