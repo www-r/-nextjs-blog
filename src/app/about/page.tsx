@@ -24,7 +24,7 @@ export default async function AboutPage() {
 							height={400}
 							style={{ objectFit: 'cover', objectPosition: 'center' }}
 						/>
-						<p className="text-sm mt-5">
+						<p className="text-sm mt-5 w-full py-5 px-5 leading-loose">
 							협업과 성장을 중요하게 생각하고, 팀으로써 같이 해결책을 모색하고 디벨롭하는 과정을 즐깁니다.
 							<br />
 							공부한 내용과 경험을 저만의 언어로 재구성하여 블로그에서 공유하고 있습니다. <br />
@@ -33,9 +33,9 @@ export default async function AboutPage() {
 						</p>
 
 						<img src="https://ghchart.rshah.org/www-r" className="my-5" />
-						<div className="w-full flex justify-evenly mt-5">
-							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[17vw]" />
-							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[17vw]" />
+						<div className="w-full flex justify-center gap-[10rem] mt-5">
+							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[15rem]" />
+							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[15rem]" />
 						</div>
 					</div>
 					<div className="grid grid-cols-2 grid-rows-2 gap-y-8 p-8 ">
