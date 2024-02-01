@@ -7,7 +7,7 @@ import SubTitle from '@components/SubTitle';
 import FlipCard from '@components/FlipCard';
 import Button from '@components/Button';
 import { Books, Graduation, Cat, Increasing } from '@/assets';
-import { URL, SUBTITLE, BUTTON } from '@/constants';
+import { SUBTITLE } from '@/constants';
 
 export default async function AboutPage() {
 	return (
