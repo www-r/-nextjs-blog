@@ -6,7 +6,7 @@ import SubTitle from '@components/SubTitle';
 // import Slider from '@/components/Slider';
 import FlipCard from '@components/FlipCard';
 import Button from '@components/Button';
-import { Books, Graduation, Cat, Increasing} from '@/assets';
+import { Books, Graduation, Cat, Increasing } from '@/assets';
 import { URL, SUBTITLE, BUTTON } from '@/constants';
 
 export default async function AboutPage() {
@@ -33,9 +33,9 @@ export default async function AboutPage() {
 						</p>
 
 						<img src="https://ghchart.rshah.org/www-r" className="my-5" />
-						<div className="w-full flex justify-between mt-5">
-							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[18vw]" />
-							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[18vw]" />
+						<div className="w-full flex justify-evenly mt-5">
+							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[17vw]" />
+							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[17vw]" />
 						</div>
 					</div>
 					<div className="grid grid-cols-2 grid-rows-2 gap-y-8 p-8 ">
