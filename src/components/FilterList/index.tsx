@@ -9,7 +9,7 @@ interface Props {
 
 export default function FilterList({ setFilter }: Props) {
 	const clickHandler = (e) => {
-		console.log(e.target.innerHTML);
+		// console.log(e.target.innerHTML);
 		setFilter(e.target.innerHTML);
 	};
 	return (

@@ -24,7 +24,7 @@ export async function readSkillAllRows() {
 	if (error) {
 		console.error('readSkillDB', error);
 	}
-	console.log('readSkillDB', skill);
+	// console.log('readSkillDB', skill);
 	return skill; //skillArr
 }
 export async function readGuestbookAllRows(): Promise<CommentData[]> {
@@ -32,7 +32,7 @@ export async function readGuestbookAllRows(): Promise<CommentData[]> {
 	if (error) {
 		console.error(error);
 	}
-	console.log('guestbook', guestbook);
+	// console.log('guestbook', guestbook);
 	return guestbook;
 }
 //WITH PAGINATION
@@ -41,7 +41,7 @@ export async function readGuestbookPagination(from = 0, to = 9) {
 	if (error) {
 		console.error('readGuestbookPagination', error);
 	}
-	console.log('guestbook', guestbook);
+	// console.log('guestbook', guestbook);
 	return guestbook;
 }
 // INSERT A ROW
@@ -62,8 +62,8 @@ export async function insertRow(input: CommentData) {
 export async function upsertRow(input: CommentData) {
 	try {
 		const { data, status } = await supabase.from(DB_TABLE_GUESTBOOK).upsert(input).select();
-		console.log('Upsert', data);
-		console.log('', status);
+		// console.log('Upsert', data);
+		// console.log('', status);
 	} catch (error) {
 		console.error(error);
 	}
