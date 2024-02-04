@@ -3,10 +3,11 @@ import '@/animation/fadeSlide.css';
 import './styles.css';
 import { useState } from 'react';
 import Image from 'next/image';
-import Icon from '../Icon';
-import { BUTTON } from '@/constants';
-import ArrowDown from '@/assets/arrow-down.png';
+import Icon from '@/components/common/Icon';
 import Button from '@components/Button';
+import { BUTTON, URL } from '@/constants';
+import ArrowDown from '@/assets/arrow-down.png';
+
 export default function SiteCover() {
 	const [text, setText] = useState<string>('');
 
@@ -28,8 +29,8 @@ export default function SiteCover() {
 				</div>
 				<div className="inner w-full flex-row--evenly mt-10">
 					<Button message={BUTTON.contact} type="contact" href="#contact" />
-					<Button message={BUTTON.resume} type="resume" href={''} />
-					<Button message={BUTTON.letter} type="letter" href={''} />
+					<Button message={BUTTON.resume} type="resume" href={URL.resume} />
+					{/* <Button message={BUTTON.letter} type="letter" href={''} /> */}
 				</div>
 				<div className="flex">
 					<Icon src={ArrowDown} alt="" animation size={30} />

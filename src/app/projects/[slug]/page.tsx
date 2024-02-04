@@ -1,5 +1,5 @@
-import Page from '@/components/Page';
-import Section from '@/components/Section';
+import Page from '@/components/common/Page';
+import Section from '@/components/common/Section';
 import { getRepoReadMe, getMarkdownRaw } from '@/service/github';
 
 export default async function PostPage() {

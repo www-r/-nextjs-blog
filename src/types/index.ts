@@ -6,8 +6,8 @@ export type Profile = {
 	value: string;
 };
 export type Skill = {
+	id: number;
 	name: string;
-	description: string;
 	image: string;
 };
 export type Education = {
@@ -17,15 +17,13 @@ export type Education = {
 };
 
 export type Project = {
-	title: string;
-	id: string; //childPageId
-	link: string;
-	image: string;
-	description: {
-		people: string;
-		term: string;
-		paragraph: string;
-	};
+	id: number;
+	name: string;
+	who: string;
+	when: string;
+	githubRepo: string;
+	thumbnail: string;
+	description: string;
 	pinned: boolean;
 	category: string;
 };

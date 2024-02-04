@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Icon from '@components/Icon';
+import Icon from '@/components/common/Icon';
 
 import Github from '@/assets/github-mark-white.png';
 import Tistory from '@/assets/logomark.png';

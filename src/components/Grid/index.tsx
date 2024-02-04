@@ -14,11 +14,6 @@ export default function Grid({ projects }: Props) {
 						<ProjectCard project={project} />
 					</li>
 				))}
-				{projects.map((project) => (
-					<li key={project.id}>
-						<ProjectCard project={project} />
-					</li>
-				))}
 			</ul>
 		);
 	} catch (error) {

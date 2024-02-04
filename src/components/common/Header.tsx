@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import Nav from '@components/Nav';
+import Nav from '@/components/common/Nav';
 import { MY_NAME } from '@/constants';
 
 export default function Header() {

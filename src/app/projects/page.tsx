@@ -1,16 +1,14 @@
-import Page from '@components/Page';
-import SubTitle from '@components/SubTitle';
+import Page from '@/components/common/Page';
+import SubTitle from '@/components/common/Subtitle';
 import ProjectsContent from '@components/ProjectsContent';
-import { getUploadedProjectsTitle, createProjectDataArr } from '@/service/data';
-
+import { readProjectAllRows } from '@/service/supabase';
 export default async function PostsPage() {
-	const totalTitleArr = await getUploadedProjectsTitle();
-	const totalProjectDataArr = await createProjectDataArr(totalTitleArr);
+	const projectArr = await readProjectAllRows();
 	return (
 		<Page className="bg-blue">
 			<section>
 				<SubTitle>Projects</SubTitle>
-				<ProjectsContent projectArr={totalProjectDataArr} />
+				<ProjectsContent projectArr={projectArr} />
 			</section>
 		</Page>
 	);

@@ -1,11 +1,13 @@
 'use client';
-import { useState, useEffect, useRef, useCallback } from 'react';
-import Label from '@components/Label';
+import { useState, useEffect, useRef, useCallback, useReducer } from 'react';
+import Label from '@/components/common/Label';
 import FormCover from '@components/FormCover';
+import Modal from '../common/Modal';
 import { insertRow, signInOAuthUser } from '@/service/supabase';
+import { modalReducer } from '@/reducer/modalReducer';
 import { formatDate } from '@/utils/formatDate';
-import { User } from '@/types';
 
+import { User } from '@/types';
 
 export default function Form({ isAuthorized }) {
 	const [user, setUser] = useState<User>();
@@ -16,7 +18,7 @@ export default function Form({ isAuthorized }) {
 	const passwordRef = useRef(null);
 	const checkboxRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
-
+	const [state, dispatch] = useReducer(modalReducer, false);
 
 	function checkboxHandler() {
 		if (isPasswordDisabled) {

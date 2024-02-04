@@ -1,5 +1,5 @@
 'use client';
-import Icon from '@components/Icon';
+import Icon from '@/components/common/Icon';
 import Button from '../Button';
 import { deleteSelectedRow } from '@/service/supabase';
 import Locked from '@/assets/lock.svg';

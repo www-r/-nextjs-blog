@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
 import './globals.css';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
-import Loader from '@/components/Loader';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
+import Loader from '@/components/common/Loader';
 
 export const metadata: Metadata = {
 	title: 'Kim Young En',

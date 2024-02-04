@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Form from '@components/Form';
 import CommentsContainer from '@components/CommentsContainer';
 import Button from '@components/Button';
-import { getDatabaseData, signInOAuthUser, signOutOAuthUser, userStateSubscription } from '@/service/supabase';
+import {readGuestbookAllRows, signInOAuthUser, signOutOAuthUser, userStateSubscription } from '@/service/supabase';
 import { CommentData } from '@/types';
 
 export default function GuestBook() {
@@ -24,7 +24,7 @@ export default function GuestBook() {
 	};
 
 	useEffect(() => {
-		getDatabaseData().then((dataArr) => {
+		readGuestbookAllRows().then((dataArr) => {
 			const sorted = dataArr.reverse();
 			setDataArr(sorted);
 		});

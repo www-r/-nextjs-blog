@@ -1,4 +1,4 @@
-import Page from '@components/Page';
+import Page from '@/components/common/Page';
 import SiteCover from '@/components/SiteCover';
 import SliderSection from '@components/SliderSection';
 import ContactSection from '@/components/ContactSection';

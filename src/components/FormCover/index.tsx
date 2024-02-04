@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react';
-import InteractiveBtn from '../InteractiveBtn';
+import InteractiveBtn from '../common/InteractiveBtn';
 import useHover from '@/hooks/useHover';
 
 interface Props extends ComponentProps<'div'> {

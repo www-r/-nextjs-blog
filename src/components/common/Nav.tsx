@@ -1,16 +1,16 @@
-import { PropsWithChildren } from 'react';
+import { ComponentProps } from 'react';
 import Link from 'next/link';
 import { PATH_NAME } from '@/constants';
 
-interface Props extends PropsWithChildren {
+interface Props extends ComponentProps<'nav'> {
 	list?: string[];
 }
 
-export default function Nav({}: Props) {
+export default function Nav({ ...props }: Props) {
 	const linksArr = [PATH_NAME.home, PATH_NAME.about, PATH_NAME.projects, PATH_NAME.guestbook];
 
 	return (
-		<nav>
+		<nav {...props}>
 			<ul className="flex-row--evenly">
 				{linksArr.map((link) => {
 					const pathname = link === PATH_NAME.home ? '' : link;

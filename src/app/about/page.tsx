@@ -1,10 +1,10 @@
 import Image from 'next/image';
 // import Link from 'next/link';
-import Page from '@components/Page';
-import Section from '@components/Section';
-import SubTitle from '@components/SubTitle';
+import Page from '@/components/common/Page';
+import Section from '@/components/common/Section';
+import SubTitle from '@/components/common/Subtitle';
 // import Slider from '@/components/Slider';
-import FlipCard from '@components/FlipCard';
+import FlipCard from '@/components/common/FlipCard';
 import Button from '@components/Button';
 import { Books, Graduation, Cat, Increasing } from '@/assets';
 import { SUBTITLE } from '@/constants';

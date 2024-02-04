@@ -1,7 +1,7 @@
-import Page from '@/components/Page';
-import Section from '@/components/Section';
+import Page from '@/components/common/Page';
+import Section from '@/components/common/Section';
 import GuestBook from '@/components/GuestBook';
-import SubTitle from '@/components/SubTitle';
+import SubTitle from '@/components/common/Subtitle';
 
 export default function GuestBookPage() {
 	return (
