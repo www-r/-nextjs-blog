@@ -1,21 +1,17 @@
 'use client';
-import { ComponentProps, useEffect, useState } from 'react';
+import { ComponentProps, useContext } from 'react';
+import { ModalStateContext, ModalMessageContext } from '@/context';
 interface Props extends ComponentProps<'dialog'> {}
-export default function Modal({ children, ...props }: Props) {
-	const [isVisible, setIsVisible] = useState(false);
 
-	useEffect(() => {
-		const button = document.querySelector('button');
-		const dialog = document.querySelector('dialog');
-		button.addEventListener('close', () => {
-			setIsVisible(false);
-		});
-	}, []);
+export default function Modal({}: Props) {
+	const { state, setState } = useContext(ModalStateContext);
+	const { message } = useContext(ModalMessageContext);
+
 	return (
-		<dialog {...props}>
-			{children}
+		<dialog style={state ? { display: 'block' } : { display: 'none' }}>
+			<p>{message}</p>
 			<form action="">
-				<button value="close" style={isVisible ? { display: 'block' } : { display: 'none' }}>
+				<button value="close" onClick={() => setState(false)}>
 					창 닫기
 				</button>
 			</form>

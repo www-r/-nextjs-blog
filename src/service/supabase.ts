@@ -24,7 +24,6 @@ export async function readSkillAllRows() {
 	if (error) {
 		console.error('readSkillDB', error);
 	}
-	// console.log('readSkillDB', skill);
 	return skill; //skillArr
 }
 export async function readGuestbookAllRows(): Promise<CommentData[]> {
@@ -32,7 +31,6 @@ export async function readGuestbookAllRows(): Promise<CommentData[]> {
 	if (error) {
 		console.error(error);
 	}
-	// console.log('guestbook', guestbook);
 	return guestbook;
 }
 //WITH PAGINATION
@@ -41,41 +39,12 @@ export async function readGuestbookPagination(from = 0, to = 9) {
 	if (error) {
 		console.error('readGuestbookPagination', error);
 	}
-	// console.log('guestbook', guestbook);
 	return guestbook;
 }
 // INSERT A ROW
 export async function insertRow(input: CommentData) {
-	if (input) {
-		const { error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
-		console.log(error);
-		if (!error) {
-			alert('전송되었습니다.insertrow');
-		} else {
-			alert('메세지 전송에 실패했습니다.insertrow ');
-		}
-	} else {
-		alert('메세지를 채워주세요.insertrow');
-	}
+	const { error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
 }
-// UPSERT MATCHING ROW
-export async function upsertRow(input: CommentData) {
-	try {
-		const { data, status } = await supabase.from(DB_TABLE_GUESTBOOK).upsert(input).select();
-		// console.log('Upsert', data);
-		// console.log('', status);
-	} catch (error) {
-		console.error(error);
-	}
-}
-
-// INSERT MANY ROWS
-// export async function insertManyRows(dataArr) {
-// 	const { data, error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(dataArr).select();
-// 	if (error) {
-// 		console.error(error);
-// 	}
-// }
 
 // DELETE ROW
 export async function deleteSelectedRow(id: string) {
@@ -98,14 +67,7 @@ export async function signInOAuthUser() {
 	}
 }
 export async function signOutOAuthUser() {
-	try {
 		const { error } = await supabase.auth.signOut();
-		alert('로그아웃되었습니다.');
-		window.location.reload();
-	} catch (error) {
-		alert('로그아웃에 실패했습니다.');
-		console.log(error);
-	}
 }
 
 export function setSession(session) {
@@ -159,9 +121,8 @@ export function userStateSubscription() {
 			// handle sign in event
 		}
 		if (event === 'SIGNED_OUT') {
-			// handle sign out event
+		
 			window.localStorage.removeItem('user');
-			await signOutOAuthUser();
 		}
 		if (event === 'PASSWORD_RECOVERY') {
 			// handle password recovery event

@@ -1,26 +1,43 @@
 'use client';
 import { useEffect, useState } from 'react';
+import useModal from '@/hooks/useModal';
 import Form from '@components/Form';
 import CommentsContainer from '@components/CommentsContainer';
 import Button from '@components/Button';
-import {readGuestbookAllRows, signInOAuthUser, signOutOAuthUser, userStateSubscription } from '@/service/supabase';
+import { readGuestbookAllRows, signInOAuthUser, signOutOAuthUser, userStateSubscription } from '@/service/supabase';
 import { CommentData } from '@/types';
 
 export default function GuestBook() {
 	const [isAuthorized, setIsAuthorized] = useState<boolean>();
 	const [dataArr, setDataArr] = useState<CommentData[]>([]);
+	const [setState, setMessage] = useModal();
+
 	function checkIfAuthorized() {
 		if (localStorage.getItem('user')) {
 			setIsAuthorized(true);
 		}
 	}
 	const loginHandler = async () => {
-		await signInOAuthUser();
-		setIsAuthorized(true);
+		try {
+			await signInOAuthUser();
+			setIsAuthorized(true);
+			setState(true);
+			setMessage('정상적으로 로그인되었습니다.');
+		} catch (error) {
+			console.log(error);
+			setMessage('로그인에 실패했습니다.');
+		}
 	};
 	const logoutHandler = async () => {
-		await signOutOAuthUser();
-		setIsAuthorized(false);
+		try {
+			await signOutOAuthUser();
+			setState(true);
+			setMessage('정상적으로 로그아웃되었습니다.');
+			setIsAuthorized(false);
+		} catch (error) {
+			console.log(error);
+			setMessage('로그아웃에 실패했습니다. 다시 시도해주세요.');
+		}
 	};
 
 	useEffect(() => {

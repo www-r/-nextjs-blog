@@ -47,3 +47,11 @@ export type User = {
 	email: string;
 	id: string;
 };
+export type StateContext = {
+	state: boolean;
+	setState: (boolean) => void;
+};
+export type MessageContext = {
+	message: string;
+	setMessage: (string) => void;
+};

@@ -1,10 +1,11 @@
 'use client';
+import { useEffect, useState } from 'react';
+import useModal from '@/hooks/useModal';
 import Icon from '@/components/common/Icon';
-import Button from '../Button';
+import Button from '@components/Button';
 import { deleteSelectedRow } from '@/service/supabase';
 import Locked from '@/assets/lock.svg';
 import { CommentData } from '@/types';
-import { useEffect, useState } from 'react';
 
 interface Props {
 	data: CommentData;
@@ -13,17 +14,19 @@ interface Props {
 export default function CommentListItem({ data }: Props) {
 	const [isEditable, setIsEditable] = useState(false);
 	const [isAuthor, setIsAuthor] = useState(false);
+	const [setState, setMessage] = useModal();
+
 	function compareTwoIds(data: CommentData) {
 		const userData = JSON.parse(window.localStorage.getItem('user'));
 		if (userData) {
 			if (data.user_id === userData.id) {
 				return true;
 			} else {
-				alert('일치하는 작성자가 아닙니다.');
 				return false;
 			}
 		} else {
-			alert('로그인해주세요.');
+			setState(true);
+			setMessage('로그인해주세요.');
 		}
 	}
 	function clickEditButton(data: CommentData) {
@@ -34,8 +37,8 @@ export default function CommentListItem({ data }: Props) {
 	async function clickDeleteButton(data: CommentData) {
 		if (compareTwoIds(data)) {
 			await deleteSelectedRow(data.id);
-			alert('삭제되었습니다.');
-			location.reload();
+			setState(true);
+			setMessage('삭제되었습니다.');
 		}
 	}
 	async function clickSendButton() {}

@@ -1,25 +1,21 @@
 'use client';
-import { useState, useEffect, useRef, useCallback, useReducer } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import useModal from '@/hooks/useModal';
 import Label from '@/components/common/Label';
 import FormCover from '@components/FormCover';
-
 import { insertRow, signInOAuthUser } from '@/service/supabase';
-import { modalReducer } from '@/reducer/modalReducer';
 import { formatDate } from '@/utils/formatDate';
-
 import { User } from '@/types';
 
 export default function Form({ isAuthorized, dataArr, setDataArr }) {
 	const [user, setUser] = useState<User>();
 	const time = formatDate();
 	const authorRef = useRef(null);
-
 	const messageRef = useRef(null);
 	const passwordRef = useRef(null);
 	const checkboxRef = useRef(null);
 	const [isPasswordDisabled, setIsPasswordDisabled] = useState<boolean>(true);
-	const [state, dispatch] = useReducer(modalReducer, false);
-
+	const [setState, setMessage] = useModal();
 	function checkboxHandler() {
 		if (isPasswordDisabled) {
 			passwordRef.current.value = null;
@@ -44,14 +40,17 @@ export default function Form({ isAuthorized, dataArr, setDataArr }) {
 			const data = getCommentData();
 			try {
 				await insertRow(data);
-				alert('전송되었습니다.');
+				setState(true);
+				setMessage('전송되었습니다.');
 				setDataArr(...dataArr, data);
 			} catch (error) {
 				console.log(error);
-				alert('전송에 실패했습니다');
+				setState(true);
+				setMessage('전송에 실패했습니다.');
 			}
 		} else {
-			alert('작성자와 메세지를 채워주세요.');
+			setState(true);
+			setMessage('작성자와 메세지를 작성해주세요.');
 		}
 	}
 	const buttonClickHandler = useCallback(async () => await signInOAuthUser(), []);
