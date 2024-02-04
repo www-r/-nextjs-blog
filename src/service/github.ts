@@ -24,6 +24,6 @@ export async function getMarkdownRaw(markdownText: string) {
 			'Content-Type': 'text/x-markdown',
 		},
 	});
-	console.log('ddd', res.data);
+	// console.log('ddd', res.data);
 	return res.data;
 }
