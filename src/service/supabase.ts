@@ -44,11 +44,13 @@ export async function readGuestbookPagination(from = 0, to = 9) {
 // INSERT A ROW
 export async function insertRow(input: CommentData) {
 	const { error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
+	console.log('insertRow', error);
 }
 
 // DELETE ROW
 export async function deleteSelectedRow(id: string) {
 	const { error } = await supabase.from(DB_TABLE_GUESTBOOK).delete().eq('id', id);
+	console.log('deleteRow', error);
 }
 
 export async function signInOAuthUser() {
@@ -67,7 +69,7 @@ export async function signInOAuthUser() {
 	}
 }
 export async function signOutOAuthUser() {
-		const { error } = await supabase.auth.signOut();
+	const { error } = await supabase.auth.signOut();
 }
 
 export function setSession(session) {
@@ -121,7 +123,6 @@ export function userStateSubscription() {
 			// handle sign in event
 		}
 		if (event === 'SIGNED_OUT') {
-		
 			window.localStorage.removeItem('user');
 		}
 		if (event === 'PASSWORD_RECOVERY') {
