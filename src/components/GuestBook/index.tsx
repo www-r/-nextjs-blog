@@ -44,7 +44,7 @@ export default function GuestBook() {
 						<Button onClick={loginHandler}>로그인하기</Button>
 					)}
 				</div>
-				<Form isAuthorized={isAuthorized} />
+				<Form isAuthorized={isAuthorized} dataArr={dataArr} setDataArr={setDataArr} />
 				<div className=" mt-5  h-[50vh] p-3 overflow-auto bg-white/80 rounded-md">
 					<CommentsContainer dataArr={dataArr} />
 				</div>

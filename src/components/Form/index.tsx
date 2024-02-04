@@ -9,7 +9,7 @@ import { formatDate } from '@/utils/formatDate';
 
 import { User } from '@/types';
 
-export default function Form({ isAuthorized }) {
+export default function Form({ isAuthorized, dataArr, setDataArr }) {
 	const [user, setUser] = useState<User>();
 	const time = formatDate();
 	const authorRef = useRef(null);
@@ -43,10 +43,9 @@ export default function Form({ isAuthorized }) {
 		if (authorRef.current.value && messageRef.current.value) {
 			const data = getCommentData();
 			try {
-				const res = await insertRow(data);
-
+				await insertRow(data);
 				alert('전송되었습니다.');
-				window.location.reload();
+				setDataArr(...dataArr, data);
 			} catch (error) {
 				console.log(error);
 				alert('전송에 실패했습니다');
