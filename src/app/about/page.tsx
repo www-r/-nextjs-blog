@@ -12,7 +12,7 @@ import { SUBTITLE } from '@/constants';
 export default async function AboutPage() {
 	return (
 		<Page className="bg-ivory">
-			<Section>
+			<Section border={false}>
 				<SubTitle>{SUBTITLE.about}</SubTitle>
 				<div className="inner grid grid-cols-2 ">
 					<div className="flex-cols items-center p-8 ">
