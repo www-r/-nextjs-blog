@@ -10,7 +10,7 @@ export const MY_NAME = 'Kim Young En';
 //About
 // const ABOUT_CATEGORY = ['Profile','Skills','Education']
 export const URL = {
-	resume:'https://www.canva.com/design/DAFqWZuH5C4/A_tOPzv6vXALk6UKqosuew/view?utm_content=DAFqWZuH5C4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink',
+	resume:'https://www.canva.com/design/DAFqWZuH5C4/v7pYHdUD53HsRHn0pFV_Nw/view?utm_content=DAFqWZuH5C4&utm_campaign=designshare&utm_medium=link&utm_source=editor',
 	letter:'https://www.canva.com/design/DAF3ANc0gTw/F-_8o3304Rur1YU7k7eXRQ/view?utm_content=DAF3ANc0gTw&utm_campaign=designshare&utm_medium=link&utm_source=editor',
 	tistory:'https://woorii-kye.tistory.com',
 	naver:'https://blog.naver.com/woo_rii_'
@@ -46,3 +46,7 @@ export const COLOR = {
 	pink: '#fed5e7',
 	purple: '#65449e',
 };
+export const EMAIL = {
+	google: 'jessicak0828@gmail.com',
+	naver:'inmein@naver.com'
+}

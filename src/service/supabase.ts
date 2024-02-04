@@ -1,20 +1,53 @@
 import { supabase } from '@/service';
 import { CommentData } from '@/types';
 
-const DB_TABLE_NAME = 'guestbook';
+const DB_TABLE_PROJECT = 'project';
+const DB_TABLE_SKILL = 'skill';
+const DB_TABLE_GUESTBOOK = 'guestbook';
 
-export async function getDatabaseData(): Promise<CommentData[]> {
-	let { data: guestbook, error } = await supabase.from(DB_TABLE_NAME).select('*', { count: 'estimated' }).range(0, 10);
+export async function readProjectAllRows() {
+	let { data: project, error } = await supabase.from(DB_TABLE_PROJECT).select('*');
+	if (error) {
+		console.error('readProjectDB', error);
+	}
+	return project;
+}
+export async function readPinnedProject() {
+	let { data: project, error } = await supabase.from(DB_TABLE_PROJECT).select('*').eq('pinned', true);
+	if (error) {
+		console.error('readPinnedProject', error);
+	}
+	return project;
+}
+export async function readSkillAllRows() {
+	let { data: skill, error } = await supabase.from(DB_TABLE_SKILL).select('*');
+	if (error) {
+		console.error('readSkillDB', error);
+	}
+	console.log('readSkillDB', skill);
+	return skill; //skillArr
+}
+export async function readGuestbookAllRows(): Promise<CommentData[]> {
+	let { data: guestbook, error } = await supabase.from(DB_TABLE_GUESTBOOK).select('*', { count: 'estimated' });
 	if (error) {
 		console.error(error);
-	} else {
-		return guestbook;
 	}
+	console.log('guestbook', guestbook);
+	return guestbook;
+}
+//WITH PAGINATION
+export async function readGuestbookPagination(from = 0, to = 9) {
+	let { data: guestbook, error } = await supabase.from(DB_TABLE_GUESTBOOK).select('*').range(from, to);
+	if (error) {
+		console.error('readGuestbookPagination', error);
+	}
+	console.log('guestbook', guestbook);
+	return guestbook;
 }
 // INSERT A ROW
 export async function insertRow(input: CommentData) {
 	if (input) {
-		const { error } = await supabase.from(DB_TABLE_NAME).insert(input);
+		const { error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
 		console.log(error);
 		if (!error) {
 			alert('전송되었습니다.insertrow');
@@ -28,7 +61,7 @@ export async function insertRow(input: CommentData) {
 // UPSERT MATCHING ROW
 export async function upsertRow(input: CommentData) {
 	try {
-		const { data, status } = await supabase.from(DB_TABLE_NAME).upsert(input).select();
+		const { data, status } = await supabase.from(DB_TABLE_GUESTBOOK).upsert(input).select();
 		console.log('Upsert', data);
 		console.log('', status);
 	} catch (error) {
@@ -38,7 +71,7 @@ export async function upsertRow(input: CommentData) {
 
 // INSERT MANY ROWS
 // export async function insertManyRows(dataArr) {
-// 	const { data, error } = await supabase.from(DB_TABLE_NAME).insert(dataArr).select();
+// 	const { data, error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(dataArr).select();
 // 	if (error) {
 // 		console.error(error);
 // 	}
@@ -46,7 +79,7 @@ export async function upsertRow(input: CommentData) {
 
 // DELETE ROW
 export async function deleteSelectedRow(id: string) {
-	const { error } = await supabase.from(DB_TABLE_NAME).delete().eq('id', id);
+	const { error } = await supabase.from(DB_TABLE_GUESTBOOK).delete().eq('id', id);
 }
 
 export async function signInOAuthUser() {
