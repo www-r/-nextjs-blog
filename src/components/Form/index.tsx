@@ -38,8 +38,9 @@ export default function Form({ isAuthorized, dataArr, setDataArr }) {
 		e.preventDefault();
 		if (authorRef.current.value && messageRef.current.value) {
 			const data = getCommentData();
+			console.log('data', data);
 			try {
-				await insertRow(data);
+				data && (await insertRow(data));
 				setState(true);
 				setMessage('전송되었습니다.');
 				setDataArr(...dataArr, data);
