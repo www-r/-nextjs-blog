@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import Label from '@/components/common/Label';
 import FormCover from '@components/FormCover';
-import Modal from '../common/Modal';
+
 import { insertRow, signInOAuthUser } from '@/service/supabase';
 import { modalReducer } from '@/reducer/modalReducer';
 import { formatDate } from '@/utils/formatDate';
