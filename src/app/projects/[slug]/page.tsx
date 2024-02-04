@@ -1,14 +1,16 @@
+'use client';
+import { usePathname } from 'next/navigation';
 import Page from '@/components/common/Page';
 import Section from '@/components/common/Section';
-import { getRepoReadMe, getMarkdownRaw } from '@/service/github';
+import ProjectSection from '@/components/ProjectSection';
 
-export default async function PostPage() {
-	const response = await getRepoReadMe('www-r', 'PortfolioSite');
-	const data = await getMarkdownRaw(response);
+export default function PostPage() {
+	const pathname = usePathname();
+	const githubRepo = pathname.replace('/projects/', '');
 	return (
-		<Page>
-			<Section className="">
-				<div dangerouslySetInnerHTML={{ __html: data }}></div>
+		<Page className="bg-blue">
+			<Section border={false}>
+				<ProjectSection github={githubRepo} />
 			</Section>
 		</Page>
 	);
