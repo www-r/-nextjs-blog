@@ -44,7 +44,7 @@ export default function Form({ isAuthorized, dataArr, setDataArr }) {
 				.then(() => {
 					setState(true);
 					setMessage('전송되었습니다.');
-					setDataArr(...dataArr, data);
+					// setDataArr(...dataArr, data);
 				})
 				.catch((error) => {
 					setState(true);

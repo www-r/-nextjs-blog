@@ -43,7 +43,10 @@ export async function readGuestbookPagination(from = 0, to = 9) {
 }
 // INSERT A ROW
 export async function insertRow(input: CommentData) {
-	await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
+	await supabase
+		.from(DB_TABLE_GUESTBOOK)
+		.insert(input)
+		.then((res) => console.log(res));
 }
 
 // DELETE ROW
