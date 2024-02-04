@@ -43,8 +43,7 @@ export async function readGuestbookPagination(from = 0, to = 9) {
 }
 // INSERT A ROW
 export async function insertRow(input: CommentData) {
-	const { error } = await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
-	console.log('insertRow', error);
+	await supabase.from(DB_TABLE_GUESTBOOK).insert(input);
 }
 
 // DELETE ROW
@@ -69,7 +68,7 @@ export async function signInOAuthUser() {
 	}
 }
 export async function signOutOAuthUser() {
-	const { error } = await supabase.auth.signOut();
+	await supabase.auth.signOut();
 }
 
 export function setSession(session) {
