@@ -39,16 +39,18 @@ export default function Form({ isAuthorized, dataArr, setDataArr }) {
 		if (authorRef.current.value && messageRef.current.value) {
 			const data = getCommentData();
 			// console.log('data', data);
-			try {
-				await insertRow(data);
-				setState(true);
-				setMessage('전송되었습니다.');
-				setDataArr(...dataArr, data);
-			} catch (error) {
-				console.log(error);
-				setState(true);
-				setMessage('전송에 실패했습니다.');
-			}
+
+			await insertRow(data)
+				.then(() => {
+					setState(true);
+					setMessage('전송되었습니다.');
+					setDataArr(...dataArr, data);
+				})
+				.catch((error) => {
+					setState(true);
+					setMessage('전송에 실패했습니다.');
+					console.log(error);
+				});
 		} else {
 			setState(true);
 			setMessage('작성자와 메세지를 작성해주세요.');
