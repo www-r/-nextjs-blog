@@ -41,8 +41,8 @@ export default function Form({ isAuthorized, dataArr, setDataArr }) {
 			console.log('data', data);
 			try {
 				data && (await insertRow(data));
-				setState(true);
-				setMessage('전송되었습니다.');
+				// setState(true);
+				// setMessage('전송되었습니다.');
 				setDataArr(...dataArr, data);
 			} catch (error) {
 				console.log(error);
