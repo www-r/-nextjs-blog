@@ -10,11 +10,11 @@ export const MY_NAME = 'Kim Young En';
 //About
 // const ABOUT_CATEGORY = ['Profile','Skills','Education']
 export const URL = {
-	resume:'https://kimyoungen.my.canva.site/resume',
-	letter:'https://www.canva.com/design/DAF3ANc0gTw/F-_8o3304Rur1YU7k7eXRQ/view?utm_content=DAF3ANc0gTw&utm_campaign=designshare&utm_medium=link&utm_source=editor',
-	tistory:'https://woorii-kye.tistory.com',
-	naver:'https://blog.naver.com/woo_rii_'
-}
+	resume: 'https://kimyoungen.my.canva.site/resume',
+	letter: 'https://kimyoungen.my.canva.site/coverletter',
+	tistory: 'https://woorii-kye.tistory.com',
+	naver: 'https://blog.naver.com/woo_rii_',
+};
 export const PATH_NAME = {
 	home: 'home',
 	about: 'about',
@@ -24,9 +24,9 @@ export const PATH_NAME = {
 export const SUBTITLE = {
 	home: 'Home',
 	about: 'About',
-	project:'Project',
+	project: 'Project',
 	guestbook: 'GuestBook',
-}
+};
 export const BUTTON = {
 	contact: {
 		en: 'Contact',
@@ -48,5 +48,5 @@ export const COLOR = {
 };
 export const EMAIL = {
 	google: 'jessicak0828@gmail.com',
-	naver:'inmein@naver.com'
-}
+	naver: 'inmein@naver.com',
+};
