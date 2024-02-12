@@ -21,8 +21,6 @@ export default function GuestBook() {
 		try {
 			await signInOAuthUser();
 			setIsAuthorized(true);
-			setState(true);
-			setMessage('정상적으로 로그인되었습니다.');
 		} catch (error) {
 			console.log(error);
 			setMessage('로그인에 실패했습니다.');
