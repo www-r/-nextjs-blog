@@ -46,7 +46,7 @@ export async function insertRow(input: CommentData) {
 	await supabase
 		.from(DB_TABLE_GUESTBOOK)
 		.insert(input)
-		.then((res) => console.log(res));
+		.then((res) => console.log(res)); //넣어야 에러 안 난다. 
 }
 
 // DELETE ROW
