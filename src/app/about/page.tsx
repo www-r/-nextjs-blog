@@ -1,5 +1,5 @@
 import Image from 'next/image';
-// import Link from 'next/link';
+import ArchiveSection from '@/components/ArchiveSection';
 import Page from '@/components/common/Page';
 import Section from '@/components/common/Section';
 import SubTitle from '@/components/common/Subtitle';
@@ -102,6 +102,7 @@ export default async function AboutPage() {
 					</div>
 				</div>
 			</Section>
+			<ArchiveSection />
 		</Page>
 	);
 }
