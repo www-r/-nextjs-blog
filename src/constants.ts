@@ -10,7 +10,7 @@ export const MY_NAME = 'Kim Young En';
 //About
 // const ABOUT_CATEGORY = ['Profile','Skills','Education']
 export const URL = {
-	resume:'https://www.canva.com/design/DAFqWZuH5C4/v7pYHdUD53HsRHn0pFV_Nw/view?utm_content=DAFqWZuH5C4&utm_campaign=designshare&utm_medium=link&utm_source=editor',
+	resume:'https://kimyoungen.my.canva.site/resume',
 	letter:'https://www.canva.com/design/DAF3ANc0gTw/F-_8o3304Rur1YU7k7eXRQ/view?utm_content=DAF3ANc0gTw&utm_campaign=designshare&utm_medium=link&utm_source=editor',
 	tistory:'https://woorii-kye.tistory.com',
 	naver:'https://blog.naver.com/woo_rii_'
