@@ -1,14 +1,8 @@
-//projects
-
-// project category
-export const FE = 'Front-End';
-export const BE = 'Back-End';
-export const FULL_STACK = 'Full-Stack';
-export const ALL = 'All';
-
-export const MY_NAME = 'Kim Young En';
-//About
-// const ABOUT_CATEGORY = ['Profile','Skills','Education']
+export const PROJECT_CATEGORY = {
+	fe: 'Front-End',
+	be: 'Back-End',
+	all: 'All',
+};
 export const URL = {
 	resume: 'https://kimyoungen.my.canva.site/resume',
 	letter: 'https://kimyoungen.my.canva.site/coverletter',
@@ -39,8 +33,4 @@ export const COLOR = {
 	orange: '#ed7c48',
 	pink: '#fed5e7',
 	purple: '#65449e',
-};
-export const EMAIL = {
-	google: 'jessicak0828@gmail.com',
-	naver: 'inmein@naver.com',
 };

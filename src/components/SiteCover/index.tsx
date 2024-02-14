@@ -5,8 +5,8 @@ import './styles.css';
 import { useState } from 'react';
 import Image from 'next/image';
 import Icon from '@/components/common/Icon';
-import Button from '@components/Button';
-import { BUTTON, URL } from '@/constants';
+import Button from '@/components/common/Button';
+import { BUTTON } from '@/constants';
 import ArrowDown from '@/assets/arrow-down.png';
 
 export default function SiteCover() {

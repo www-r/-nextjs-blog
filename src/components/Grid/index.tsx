@@ -1,6 +1,6 @@
 'use client';
 import { Project } from '@/types';
-import ProjectCard from '../ProjectCard';
+import ProjectCard from '@components/common/ProjectCard';
 
 interface Props {
 	projects: Project[];

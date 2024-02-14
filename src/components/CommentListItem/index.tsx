@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import useModal from '@/hooks/useModal';
 import Icon from '@/components/common/Icon';
-import Button from '@components/Button';
+import Button from '@/components/common/Button';
 import { deleteSelectedRow } from '@/service/supabase';
 import Locked from '@/assets/lock.svg';
 import { CommentData } from '@/types';

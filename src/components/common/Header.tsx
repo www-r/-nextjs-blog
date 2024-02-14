@@ -1,7 +1,8 @@
 'use client';
 import Link from 'next/link';
 import Nav from '@/components/common/Nav';
-import { MY_NAME } from '@/constants';
+
+const MY_NAME = 'Kim Young En';
 
 export default function Header() {
 	return (

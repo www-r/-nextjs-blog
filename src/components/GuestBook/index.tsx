@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import useModal from '@/hooks/useModal';
 import Form from '@components/Form';
 import CommentsContainer from '@components/CommentsContainer';
-import Button from '@components/Button';
+import Button from '@/components/common/Button';
 import { readGuestbookAllRows, signInOAuthUser, signOutOAuthUser, userStateSubscription } from '@/service/supabase';
 import { CommentData } from '@/types';
 

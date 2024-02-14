@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-// import { usePathname } from 'next/navigation';
 import { Project } from '@/types';
 interface Props {
 	project: Project;
@@ -14,7 +13,7 @@ export default function ProjectCard({ project }: Props) {
 				pathname: `/projects/${project.githubRepo}`,
 			}}
 		>
-			<article className="border-solid border-[0.1rem] bg-white min-w-[20rem] max-w-[25rem] mx-auto rounded-md overflow-hidden shadow-md hover:shadow-xl hover:translate-x-1 hover:-translate-y-1">
+			<article className="border-[rgba(0,0,0,0.5)] border-solid border-[0.1rem] bg-white min-w-[21rem] max-w-[25rem] mx-auto rounded-md overflow-hidden shadow-md hover:shadow-xl hover:translate-x-1 hover:-translate-y-1">
 				<div className="center h-[20rem]">
 					<Image width={300} height={300} src={project.thumbnail} alt={project.name} style={{ objectFit: 'cover' }} />
 				</div>

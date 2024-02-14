@@ -2,8 +2,8 @@ import Link from 'next/link';
 import Section from '@/components/common/Section';
 import Slider from '@/components/common/Slider';
 import SubTitle from '@/components/common/Subtitle';
-import SkillBox from '@components/SkillBox';
-import ProjectCard from '@components/ProjectCard';
+import SkillBox from '@/components/common/SkillBox';
+import ProjectCard from '@/components/common/ProjectCard';
 import { readPinnedProject, readSkillAllRows } from '@/service/supabase';
 import { Skill } from '@/types';
 

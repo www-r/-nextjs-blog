@@ -6,7 +6,7 @@ import Section from '@/components/common/Section';
 import SubTitle from '@/components/common/Subtitle';
 // import Slider from '@/components/Slider';
 import FlipCard from '@/components/common/FlipCard';
-import Button from '@components/Button';
+import Button from '@/components/common/Button';
 import { Books, Graduation, Cat, Increasing } from '@/assets';
 import { SUBTITLE, BUTTON, URL } from '@/constants';
 
@@ -73,7 +73,6 @@ export default async function AboutPage() {
 							<div>
 								<p>서울여자대학교</p>
 								<p>2017.3 ~ 2020.9</p>
-								<p>일어일문학과 전공</p>
 							</div>
 							<div>
 								<p>패스트캠퍼스 KDT 프론트엔드 중급 4기 </p>
@@ -86,7 +85,7 @@ export default async function AboutPage() {
 								<p></p>
 							</div>
 						</FlipCard>
-						<FlipCard img={Cat} title="후추&고로">
+						<FlipCard img={Cat} title="Cats">
 							<Image src="/cats.png" alt="Goro & Hoochu" width={250} height={250} style={{ objectFit: 'contain' }} />
 						</FlipCard>
 
@@ -94,15 +93,9 @@ export default async function AboutPage() {
 							<ul>
 								<li>
 									<span>토익 895</span>
-									{/* <Link href={URL.tistory}>
-										<Image src={Tistory} alt="Tistory Logo" width={200} height={100} className="bg-white" />
-									</Link> */}
 								</li>
 								<li>
 									<span>SQLD 진행 중</span>
-									{/* <Link href={URL.naver}>
-										<Image src={Naver} alt="Naver Blog Logo" width={200} height={100} />
-									</Link> */}
 									<p></p>
 								</li>
 							</ul>
