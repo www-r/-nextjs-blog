@@ -15,12 +15,6 @@ export const URL = {
 	tistory: 'https://woorii-kye.tistory.com',
 	naver: 'https://blog.naver.com/woo_rii_',
 };
-export const PATH_NAME = {
-	home: 'home',
-	about: 'about',
-	projects: 'projects',
-	guestbook: 'guestbook',
-};
 export const SUBTITLE = {
 	home: 'Home',
 	about: 'About',

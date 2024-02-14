@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import ArchiveSection from '@/components/ArchiveSection';
 import Page from '@/components/common/Page';
 import Section from '@/components/common/Section';
@@ -7,8 +8,9 @@ import SubTitle from '@/components/common/Subtitle';
 import FlipCard from '@/components/common/FlipCard';
 import Button from '@components/Button';
 import { Books, Graduation, Cat, Increasing } from '@/assets';
-import { SUBTITLE } from '@/constants';
+import { SUBTITLE, BUTTON, URL } from '@/constants';
 
+const INTERVIEW_PATH_NAME = '/about/interview';
 export default async function AboutPage() {
 	return (
 		<Page className="bg-ivory">
@@ -29,14 +31,20 @@ export default async function AboutPage() {
 							<br />
 							공부한 내용과 경험을 저만의 언어로 재구성하여 블로그에서 공유하고 있습니다. <br />
 							다양한 관점(시각)에서 사고할 수 있는 개발자가 되고 싶습니다.
+							<Link href={INTERVIEW_PATH_NAME} className="mx-10 border-b border-solid">
+								read more
+							</Link>
 							<br />
 						</p>
-
 						<img src="https://ghchart.rshah.org/www-r" className="my-5" />
-						{/* <div className="w-full flex justify-center gap-[10rem] mt-5">
-							<Button message={BUTTON.resume} type="resume" href={URL.resume} className="w-[15rem]" />
-							<Button message={BUTTON.letter} type="letter" href={URL.letter} className="w-[15rem]" />
-						</div> */}
+						<div className="w-full flex justify-center mt-5">
+							<Link href={URL.resume}>
+								<Button message={BUTTON.resume} type="resume" />
+							</Link>
+							<Link href="/#contact">
+								<Button message={BUTTON.contact} type="contact" />
+							</Link>
+						</div>
 					</div>
 					<div className="grid grid-cols-2 grid-rows-2 gap-y-8 p-8 ">
 						<FlipCard img={Increasing} title="Profile">
