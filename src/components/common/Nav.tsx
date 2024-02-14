@@ -1,11 +1,16 @@
 import { ComponentProps } from 'react';
 import Link from 'next/link';
-import { PATH_NAME } from '@/constants';
 
 interface Props extends ComponentProps<'nav'> {
 	list?: string[];
 }
 
+const PATH_NAME = {
+	home: 'home',
+	about: 'about',
+	projects: 'projects',
+	guestbook: 'guestbook',
+};
 export default function Nav({ ...props }: Props) {
 	const linksArr = [PATH_NAME.home, PATH_NAME.about, PATH_NAME.projects, PATH_NAME.guestbook];
 

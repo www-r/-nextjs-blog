@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import '@/animation/fadeSlide.css';
 import './styles.css';
 import { useState } from 'react';
@@ -28,9 +29,9 @@ export default function SiteCover() {
 					</div>
 				</div>
 				<div className="inner w-full flex-row--evenly mt-10">
-					<Button message={BUTTON.contact} type="contact" href="#contact" />
-					<Button message={BUTTON.resume} type="resume" href={URL.resume} />
-					{/* <Button message={BUTTON.letter} type="letter" href={''} /> */}
+					<Link href="#contact">
+						<Button message={BUTTON.contact} type="contact" />
+					</Link>
 				</div>
 				<div className="flex">
 					<Icon src={ArrowDown} alt="" animation size={30} />
