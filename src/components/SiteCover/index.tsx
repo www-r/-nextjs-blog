@@ -1,8 +1,6 @@
 'use client';
+// import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import '@/animation/fadeSlide.css';
-import './styles.css';
-import { useState } from 'react';
 import Image from 'next/image';
 import Icon from '@/components/common/Icon';
 import Button from '@/components/common/Button';
@@ -10,23 +8,23 @@ import { BUTTON } from '@/constants';
 import ArrowDown from '@/assets/arrow-down.png';
 
 export default function SiteCover() {
-	const [text, setText] = useState<string>('');
+	// const [text, setText] = useState<string>('');
 
 	return (
-		<section className="section  min-h-[60rem] align-center pb-[4rem] transition-[height_1s_ease-in-out]">
+		<section className="min-h-[60rem] align-center py-[5rem] ">
 			<div className="section-container w-full flex-cols items-center">
-				<div className="">
+				<div className="min-h-[50rem] pt-14">
 					<Image
 						src="/cover.png"
 						alt="Main Page Picture"
 						width={1000}
-						height={270}
-						style={{ objectFit: 'cover', objectPosition: 'center' }}
+						height={1000}
+						style={{ objectFit: 'cover', objectPosition: 'center', height: 'auto', width: 'auto' }}
 						priority
 					/>
-					<div className="text-4xl">
+					{/* <div className="text-4xl">
 						<p>{text}</p>
-					</div>
+					</div> */}
 				</div>
 				<div className="inner w-full flex-row--evenly mt-10">
 					<Link href="#contact">

@@ -1,5 +1,4 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import './styles.css';
 
@@ -8,7 +7,6 @@ export default function FlipCard({ children, img, front = 'icon', title = '' }) 
 		e.target.closest('.container').classList.contains('rotate')
 			? e.target.closest('.container').classList.remove('rotate')
 			: e.target.classList.add('rotate');
-		// console.log(e.target.closest('.container'));
 	}
 	return (
 		<div className="container text-md font-medium" onClick={(e) => clickHandler(e)}>
