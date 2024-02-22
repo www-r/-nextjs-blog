@@ -1,4 +1,4 @@
-
+'use client';
 import { useCallback, useEffect, useState, useRef } from 'react';
 
 const useHover = () => {

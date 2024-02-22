@@ -1,0 +1,4 @@
+.header.down {
+	transform: translateY(300);
+	background-color: red;
+}

@@ -4,12 +4,10 @@ import SliderSection from '@components/SliderSection';
 import ContactSection from '@/components/ContactSection';
 export default async function Home() {
 	return (
-		<div className="bg-white">
-			<Page>
-				<SiteCover />
-				<SliderSection />
-				<ContactSection />
-			</Page>
-		</div>
+		<Page className="bg-white">
+			<SiteCover />
+			<SliderSection />
+			<ContactSection />
+		</Page>
 	);
 }
