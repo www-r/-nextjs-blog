@@ -26,9 +26,9 @@ export default function Nav({ ...props }: Props) {
 						}
 					};
 					return (
-						<Link href={`/${pathname}`} key={link} onClick={() => clickHandler(link)}>
+						<a href={`/${pathname}`} key={link} onClick={() => clickHandler(link)}>
 							<li className="p-4 sm:text-vw-sm 2xl:text-xl font-header hover:text-[orange]">{link}</li>
-						</Link>
+						</a>
 					);
 				})}
 			</ul>
