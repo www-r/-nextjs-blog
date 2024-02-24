@@ -10,7 +10,9 @@ export default function FormCover({ className, buttonClickHandler }: Props) {
 	if (typeof ref !== 'boolean') {
 		return (
 			<div
-				className={className + ' absolute z-3  w-full h-full top-0 left-0 center font-header bg-white/30 rounded-md '}
+				className={
+					className + ' absolute z-[99]  w-full h-full top-0 left-0 center font-header bg-white/30 rounded-md '
+				}
 				ref={ref}
 			>
 				{hovering && (
