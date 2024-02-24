@@ -10,13 +10,14 @@
 	line-height: 1.4;
 	font-size: 4rem;
 	font-weight: 800;
-	margin: 1rem 0.2rem;
+	margin: 1rem 0;
 	border-bottom: 0.1rem solid black;
 }
 .project-container h2 {
+	line-height: 1.6;
 	font-size: 3rem;
 	font-weight: 600;
-	margin: 0.8rem 0.2rem;
+	margin: 2.4rem 0 0;
 }
 .project-container h3 {
 	font-size: 2.6rem;
@@ -30,8 +31,11 @@
 }
 .project-container li {
 	padding: 0 1rem;
+	list-style-type: disc;
 }
 .project-container p {
-	margin: 1rem 0.2rem;
-
+}
+.project-container a:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
